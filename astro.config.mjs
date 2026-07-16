@@ -1,7 +1,6 @@
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 import imagekit from '@imagekit/astro/integration';
-import sanity from '@sanity/astro';
 import { defineConfig } from 'astro/config';
 import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
@@ -39,17 +38,9 @@ function loadLocalEnv() {
 
 const env = loadLocalEnv();
 const site = env.PUBLIC_SITE_URL || 'https://www.graficacriasett.com.br';
-const sanityProjectId = env.PUBLIC_SANITY_PROJECT_ID || '00000000';
-const sanityDataset = env.PUBLIC_SANITY_DATASET || 'production';
 const imageKitEndpoint = env.IMAGEKIT_URL_ENDPOINT;
 
 const integrations = [
-	sanity({
-		projectId: sanityProjectId,
-		dataset: sanityDataset,
-		useCdn: false,
-		studioBasePath: '/admin',
-	}),
 	react(),
 	sitemap(),
 ];
