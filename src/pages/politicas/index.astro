@@ -1,0 +1,33 @@
+---
+import PageHero from '@components/PageHero.astro';
+import SectionHeader from '@components/SectionHeader.astro';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { policies } from '@data/site';
+
+---
+
+<BaseLayout title="Políticas" description="Políticas públicas, PDFs e documentos institucionais da Gráfica Criasett.">
+	<PageHero
+		eyebrow="Transparência"
+		title="Políticas e documentos públicos."
+		text="Uma biblioteca organizada para substituir PDFs soltos por categorias, descrições e links claros."
+	/>
+
+	<section class="section">
+		<div class="section__inner">
+			<SectionHeader title="Biblioteca de políticas" text="A estrutura visual está pronta para receber PDFs reais quando a empresa enviar os documentos." />
+			<div class="policy-list">
+				{
+					policies.map((policy) => (
+						<article>
+							<p class="card-kicker">{policy.category}</p>
+							<h2>{policy.title}</h2>
+							{policy.description && <span>{policy.description}</span>}
+							<span class="muted-note">{policy.status}</span>
+						</article>
+					))
+				}
+			</div>
+		</div>
+	</section>
+</BaseLayout>

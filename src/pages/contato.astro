@@ -1,0 +1,82 @@
+---
+import PageHero from '@components/PageHero.astro';
+import SectionHeader from '@components/SectionHeader.astro';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { departments, quoteChecklist, siteMeta, solutionGroups } from '@data/site';
+---
+
+<BaseLayout title="Contato" description="Fale com a Gráfica Criasett: comercial, compras, RH, financeiro e compliance.">
+	<PageHero
+		eyebrow="Contato"
+		title="Fale com a área certa e envie um briefing melhor."
+		text="A página de contato organiza orçamento, compras, RH, financeiro e compliance sem misturar todos os assuntos em um único canal."
+	/>
+
+	<section class="section">
+		<div class="section__inner contact-layout">
+			<div>
+				<SectionHeader
+					eyebrow="Atendimento"
+					title="Canais por assunto"
+					text="Por enquanto usamos contatos locais. Quando a empresa confirmar e-mails e telefones oficiais, atualizamos aqui ou migramos estes campos para o admin."
+				/>
+				<div class="department-list">
+					{
+						departments.map((department) => (
+							<article>
+								<h2>{department.title}</h2>
+								{department.description && <p>{department.description}</p>}
+								{department.email && <a href={`mailto:${department.email}`}>{department.email}</a>}
+							</article>
+						))
+					}
+				</div>
+			</div>
+
+			<aside class="contact-panel">
+				<p class="eyebrow">Orçamento</p>
+				<h2>Comece com as informações principais</h2>
+				<p>
+					Quando escolhermos o provedor de e-mail, este formulário será ligado a um endpoint seguro no Vercel.
+					Por enquanto ele serve como modelo do fluxo.
+				</p>
+				<form class="contact-form">
+					<label>
+						Nome e empresa
+						<input type="text" name="name" autocomplete="name" />
+					</label>
+					<label>
+						E-mail
+						<input type="email" name="email" autocomplete="email" />
+					</label>
+					<label>
+						Tipo de material
+						<select name="projectType">
+							<option value="">Selecione</option>
+							{solutionGroups.map((solution) => <option value={solution.title}>{solution.title}</option>)}
+						</select>
+					</label>
+					<label>
+						Briefing inicial
+						<textarea name="message" rows="6" placeholder="Conte formato, tiragem, prazo, acabamento e referências."></textarea>
+					</label>
+					<button class="button button--primary" type="button">Enviar em breve</button>
+				</form>
+				<a class="muted-note" href={siteMeta.whatsappHref}>{siteMeta.whatsappLabel}</a>
+			</aside>
+		</div>
+	</section>
+
+	<section class="section section--muted">
+		<div class="section__inner quote-layout">
+			<SectionHeader
+				eyebrow="Briefing"
+				title="Quanto melhor o envio, mais precisa a resposta."
+				text="Este bloco já prepara o site para orientar clientes antes do contato comercial."
+			/>
+			<ul class="quote-list">
+				{quoteChecklist.map((item) => <li>{item}</li>)}
+			</ul>
+		</div>
+	</section>
+</BaseLayout>

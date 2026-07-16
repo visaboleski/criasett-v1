@@ -1,0 +1,23 @@
+---
+import { siteMeta, solutionGroups } from '@data/site';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+	<div class="site-footer__intro">
+		<p class="footer-brand">{siteMeta.name}</p>
+		<p>{siteMeta.description}</p>
+	</div>
+	<nav aria-label="Links de rodapé">
+		<a href="/institucional">Institucional</a>
+		<a href="/estrutura">Estrutura</a>
+		<a href="/portfolio">Portfólio</a>
+		<a href="/politicas">Políticas</a>
+		<a href="/contato">Contato</a>
+	</nav>
+	<div class="footer-solutions" aria-label="Soluções">
+		{solutionGroups.map((solution) => <a href={solution.href}>{solution.title}</a>)}
+	</div>
+	<p class="footer-meta">© {year} {siteMeta.name}. Site em desenvolvimento.</p>
+</footer>

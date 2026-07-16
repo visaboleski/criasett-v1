@@ -1,0 +1,8 @@
+node_modules/
+.pnpm-store/
+.astro/
+dist/
+.env
+.env.local
+.DS_Store
+*.log

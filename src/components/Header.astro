@@ -1,0 +1,37 @@
+---
+import { siteMeta } from '@data/site';
+
+const navItems = [
+	{ href: '/', label: 'Início' },
+	{ href: '/institucional', label: 'Institucional' },
+	{ href: '/estrutura', label: 'Estrutura' },
+	{ href: '/portfolio', label: 'Portfólio' },
+	{ href: '/politicas', label: 'Políticas' },
+	{ href: '/blog', label: 'Blog' },
+	{ href: '/contato', label: 'Contato' },
+];
+---
+
+<header class="site-header">
+	<div class="site-header__rail" aria-hidden="true"></div>
+	<a class="brand" href="/" aria-label={siteMeta.name}>
+		<span class="brand-mark" aria-hidden="true">C</span>
+		<span>
+			<strong>{siteMeta.name}</strong>
+			<small>{siteMeta.location}</small>
+		</span>
+	</a>
+
+	<nav class="desktop-nav" aria-label="Navegação principal">
+		{navItems.map((item) => <a href={item.href}>{item.label}</a>)}
+	</nav>
+
+	<a class="header-cta" href="/contato">Orçamento</a>
+
+	<details class="mobile-nav">
+		<summary>Menu</summary>
+		<div>
+			{navItems.map((item) => <a href={item.href}>{item.label}</a>)}
+		</div>
+	</details>
+</header>

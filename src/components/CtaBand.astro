@@ -1,0 +1,22 @@
+---
+interface Props {
+	eyebrow?: string;
+	title: string;
+	text: string;
+	href?: string;
+	label?: string;
+}
+
+const { eyebrow = 'Vamos conversar', title, text, href = '/contato', label = 'Solicitar orçamento' } = Astro.props;
+---
+
+<section class="section section--dark">
+	<div class="section__inner editorial-strip">
+		<div>
+			<p class="eyebrow">{eyebrow}</p>
+			<h2>{title}</h2>
+		</div>
+		<p>{text}</p>
+		<a class="button button--light" href={href}>{label}</a>
+	</div>
+</section>

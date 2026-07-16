@@ -1,0 +1,45 @@
+---
+import type { PortfolioItem } from '@data/site';
+
+interface Props {
+	items: PortfolioItem[];
+	linked?: boolean;
+}
+
+const { items, linked = true } = Astro.props;
+
+const categoryLabel: Record<string, string> = {
+	embalagem: 'Embalagem',
+	pdv: 'PDV',
+	promocional: 'Promocional',
+};
+---
+
+<div class="portfolio-grid">
+	{
+		items.map((item) => (
+			<article class="portfolio-card">
+				{item.imageUrl ? (
+					<img src={item.imageUrl} alt={item.title} loading="lazy" />
+				) : (
+					<div class={`portfolio-card__placeholder tone-${item.category ?? 'default'}`} aria-hidden="true">
+						<span>{categoryLabel[item.category ?? ''] ?? 'Impressos'}</span>
+					</div>
+				)}
+				<div class="portfolio-card__body">
+					<p class="card-kicker">{categoryLabel[item.category ?? ''] ?? item.category}</p>
+					<h3>{item.title}</h3>
+					{item.summary && <p>{item.summary}</p>}
+					{item.materials && (
+						<ul class="tag-list">
+							{item.materials.map((material) => (
+								<li>{material}</li>
+							))}
+						</ul>
+					)}
+					{linked && <a class="text-link card-link" href={`/portfolio/${item.slug}`}>Ver detalhes</a>}
+				</div>
+			</article>
+		))
+	}
+</div>

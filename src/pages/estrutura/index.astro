@@ -1,0 +1,60 @@
+---
+import CtaBand from '@components/CtaBand.astro';
+import PageHero from '@components/PageHero.astro';
+import SectionHeader from '@components/SectionHeader.astro';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { structureAreas } from '@data/site';
+---
+
+<BaseLayout title="Estrutura" description="Estrutura produtiva da Gráfica Criasett: pré-impressão, impressão, acabamento, qualidade e logística.">
+	<PageHero
+		eyebrow="Estrutura"
+		title="Capacidade produtiva apresentada com clareza."
+		text="Esta página mostra como a produção se organiza da pré-impressão ao acabamento, sem transformar o site em uma lista técnica difícil de ler."
+	/>
+
+	<section class="section">
+		<div class="section__inner">
+			<SectionHeader
+				eyebrow="Processo"
+				title="Etapas pensadas para decisão B2B."
+				text="Cada área deve explicar o que faz, por que importa e como contribui para qualidade, prazo e confiança."
+			/>
+			<div class="structure-list">
+				{
+					structureAreas.map((area, index) => (
+						<article id={area.slug}>
+							<span>{String(index + 1).padStart(2, '0')}</span>
+							<div>
+								<h2>{area.title}</h2>
+								<p>{area.summary}</p>
+								<ul class="tag-list">
+									{area.highlights.map((highlight) => <li>{highlight}</li>)}
+								</ul>
+							</div>
+						</article>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<section class="section section--muted">
+		<div class="section__inner split">
+			<SectionHeader
+				eyebrow="Próximas imagens"
+				title="Aqui entram fotos reais de máquina, equipe e acabamento."
+				text="O ideal é usar imagens claras, sem excesso de tratamento, mostrando produto, processo e escala. ImageKit entra depois para otimizar tudo."
+			/>
+			<div class="media-placeholder">
+				<span>Produção Criasett</span>
+			</div>
+		</div>
+	</section>
+
+	<CtaBand
+		title="Quer transformar um projeto gráfico em produção?"
+		text="A página de contato vai centralizar orçamento, compras, RH, financeiro e compliance sem misturar todos os assuntos em um único formulário."
+	/>
+</BaseLayout>
+

@@ -1,0 +1,72 @@
+---
+import CtaBand from '@components/CtaBand.astro';
+import PageHero from '@components/PageHero.astro';
+import SectionHeader from '@components/SectionHeader.astro';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { institutional } from '@data/site';
+---
+
+<BaseLayout title="Institucional" description="Conheça a Gráfica Criasett, sua história, valores e posicionamento.">
+	<PageHero eyebrow={institutional.eyebrow} title={institutional.title} text={institutional.intro} />
+
+	<section class="section">
+		<div class="section__inner split">
+			<SectionHeader
+				eyebrow="Quem somos"
+				title="Credibilidade sem parecer panfleto."
+				text={institutional.about}
+			/>
+			<div class="statement-grid">
+				<article>
+					<p class="card-kicker">Missão</p>
+					<h2>{institutional.mission}</h2>
+				</article>
+				<article>
+					<p class="card-kicker">Visão</p>
+					<h2>{institutional.vision}</h2>
+				</article>
+			</div>
+		</div>
+	</section>
+
+	<section class="section section--muted">
+		<div class="section__inner">
+			<SectionHeader
+				eyebrow="Valores"
+				title="O que precisa aparecer na marca."
+				text="Estes valores ajudam a orientar tom, imagens, layout e chamadas do site."
+			/>
+			<div class="value-row">
+				{institutional.values.map((value) => <span>{value}</span>)}
+			</div>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="section__inner">
+			<SectionHeader
+				eyebrow="História"
+				title="Uma linha institucional simples."
+				text="A linha do tempo fica pronta para receber datas, prêmios e certificações reais."
+			/>
+			<div class="timeline">
+				{
+					institutional.milestones.map((item) => (
+						<article>
+							<strong>{item.year}</strong>
+							<p>{item.text}</p>
+						</article>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<CtaBand
+		title="A estrutura produtiva é parte importante da confiança."
+		text="Depois de entender quem é a Criasett, o próximo passo é mostrar como a operação sustenta qualidade, acabamento e prazo."
+		href="/estrutura"
+		label="Conhecer estrutura"
+	/>
+</BaseLayout>
+

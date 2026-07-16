@@ -1,0 +1,27 @@
+---
+import PageHero from '@components/PageHero.astro';
+import PortfolioGrid from '@components/PortfolioGrid.astro';
+import SectionHeader from '@components/SectionHeader.astro';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { portfolioItems } from '@data/site';
+
+const items = portfolioItems;
+---
+
+<BaseLayout title="Portfólio" description="Portfólio da Gráfica Criasett: embalagens, PDV e materiais promocionais.">
+	<PageHero
+		eyebrow="Portfólio"
+		title="Embalagens, PDV e promocionais."
+		text="Uma vitrine para fotos de materiais produzidos, categorias e detalhes de acabamento."
+	/>
+
+	<section class="section">
+		<div class="section__inner">
+			<SectionHeader
+				title="Materiais produzidos"
+				text="Agora estamos usando conteúdo local para desenhar a experiência. Depois, estes mesmos itens podem vir do Sanity."
+			/>
+			<PortfolioGrid items={items} />
+		</div>
+	</section>
+</BaseLayout>
