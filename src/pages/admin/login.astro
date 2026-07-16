@@ -1,0 +1,85 @@
+---
+import { getSafeAdminRedirect } from '@lib/auth/redirects';
+import { getAdminSession } from '@lib/auth/admin';
+import { hasSupabasePublicConfig } from '@lib/supabase/config';
+import { createSupabaseServerClient } from '@lib/supabase/server';
+import AdminLayout from '@layouts/AdminLayout.astro';
+
+export const prerender = false;
+
+Astro.response.headers.set('Cache-Control', 'private, no-store');
+
+const redirectTo = getSafeAdminRedirect(Astro.url.searchParams.get('redirectTo'));
+const error = Astro.url.searchParams.get('error');
+const hasConfig = hasSupabasePublicConfig();
+
+if (hasConfig) {
+	const supabase = createSupabaseServerClient({
+		cookies: Astro.cookies,
+		request: Astro.request,
+		responseHeaders: Astro.response.headers,
+	});
+	const adminSession = await getAdminSession(supabase);
+
+	if (adminSession) {
+		return Astro.redirect(redirectTo);
+	}
+}
+
+const messages: Record<string, string> = {
+	config: 'Configuração do Supabase pendente. Adicione PUBLIC_SUPABASE_URL e PUBLIC_SUPABASE_PUBLISHABLE_KEY.',
+	credentials: 'E-mail ou senha inválidos.',
+	forbidden: 'Usuário autenticado sem perfil administrativo ativo.',
+	method: 'Método de acesso inválido.',
+	origin: 'Origem da requisição recusada.',
+};
+
+const message = error ? messages[error] : null;
+---
+
+<AdminLayout title="Entrar">
+	<main class="admin-page">
+		<section class="admin-panel admin-panel--narrow">
+			<div class="admin-heading">
+				<h1>Admin Criasett</h1>
+				<p>Acesso restrito.</p>
+			</div>
+
+			{
+				message && (
+					<p class:list={['admin-alert', error === 'config' ? null : 'admin-alert--danger']}>
+						{message}
+					</p>
+				)
+			}
+
+			<form class="admin-form" method="post" action="/admin/api/login">
+				<input type="hidden" name="redirectTo" value={redirectTo} />
+
+				<label class="admin-field">
+					<span>E-mail</span>
+					<input
+						type="email"
+						name="email"
+						autocomplete="username"
+						required
+						disabled={!hasConfig}
+					/>
+				</label>
+
+				<label class="admin-field">
+					<span>Senha</span>
+					<input
+						type="password"
+						name="password"
+						autocomplete="current-password"
+						required
+						disabled={!hasConfig}
+					/>
+				</label>
+
+				<button class="admin-button" type="submit" disabled={!hasConfig}>Entrar</button>
+			</form>
+		</section>
+	</main>
+</AdminLayout>

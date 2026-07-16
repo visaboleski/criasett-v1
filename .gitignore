@@ -2,6 +2,7 @@ node_modules/
 .pnpm-store/
 .astro/
 dist/
+.vercel/
 .env
 .env.local
 .DS_Store

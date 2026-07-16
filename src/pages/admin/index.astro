@@ -1,0 +1,82 @@
+---
+import { getAdminSession } from '@lib/auth/admin';
+import { hasSupabasePublicConfig } from '@lib/supabase/config';
+import { createSupabaseServerClient } from '@lib/supabase/server';
+import AdminLayout from '@layouts/AdminLayout.astro';
+
+export const prerender = false;
+
+Astro.response.headers.set('Cache-Control', 'private, no-store');
+
+if (!hasSupabasePublicConfig()) {
+	return new Response(null, {
+		status: 302,
+		headers: {
+			Location: '/admin/login?redirectTo=%2Fadmin&error=config',
+			'Cache-Control': 'private, no-store',
+			'X-Robots-Tag': 'noindex',
+		},
+	});
+}
+
+const supabase = createSupabaseServerClient({
+	cookies: Astro.cookies,
+	request: Astro.request,
+	responseHeaders: Astro.response.headers,
+});
+const adminSession = await getAdminSession(supabase);
+
+if (!adminSession) {
+	return new Response(null, {
+		status: 302,
+		headers: {
+			Location: '/admin/login?redirectTo=%2Fadmin',
+			'Cache-Control': 'private, no-store',
+			'X-Robots-Tag': 'noindex',
+		},
+	});
+}
+
+const displayName =
+	adminSession.profile.display_name || adminSession.user.email || 'Administrador';
+---
+
+<AdminLayout title="Administração">
+	<div class="admin-shell">
+		<header class="admin-topbar">
+			<a class="admin-brand" href="/admin" aria-label="Admin Criasett">
+				<span class="admin-brand__mark" aria-hidden="true">C</span>
+				<span>
+					<strong>Admin Criasett</strong>
+					<small>{displayName}</small>
+				</span>
+			</a>
+
+			<form method="post" action="/admin/logout">
+				<button class="admin-button admin-button--ghost" type="submit">Sair</button>
+			</form>
+		</header>
+
+		<main class="admin-page">
+			<section class="admin-heading">
+				<h1>Painel administrativo</h1>
+				<p>Base autenticada pronta para os módulos editoriais da próxima fase.</p>
+			</section>
+
+			<div class="admin-grid" aria-label="Módulos planejados">
+				<article class="admin-card">
+					<h2>Portfólio</h2>
+					<p>Aguardando o modelo de dados aprovado.</p>
+				</article>
+				<article class="admin-card">
+					<h2>Documentos</h2>
+					<p>Aguardando a etapa de armazenamento de PDFs.</p>
+				</article>
+				<article class="admin-card">
+					<h2>Conteúdo</h2>
+					<p>Sem edição de páginas nesta fundação.</p>
+				</article>
+			</div>
+		</main>
+	</div>
+</AdminLayout>
