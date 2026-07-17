@@ -156,12 +156,13 @@ max_indexes = 5
 enabled = true
 # The base URL of your website. Used as an allow-list for redirects and for constructing URLs used
 # in emails.
-site_url = "https://www.graficacriasett.com.br"
+site_url = "https://criasett-v1.vercel.app"
 # The public URL that Auth serves on. Defaults to the API external URL with `/auth/v1` appended.
 # external_url = ""
 # A list of *exact* URLs that auth providers are permitted to redirect to post authentication.
 additional_redirect_urls = [
-  "https://www.graficacriasett.com.br/admin",
+  "https://criasett-v1.vercel.app/admin",
+  "https://criasett-v1-h7rt4avsy-visaboleskis-projects.vercel.app/admin",
   "http://localhost:4321/admin",
   "http://127.0.0.1:4321/admin",
   "http://localhost:4322/admin",
