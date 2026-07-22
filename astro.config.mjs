@@ -1,5 +1,6 @@
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
+import vercel from '@astrojs/vercel';
 import imagekit from '@imagekit/astro/integration';
 import { defineConfig } from 'astro/config';
 import { existsSync, readFileSync } from 'node:fs';
@@ -55,5 +56,6 @@ if (imageKitEndpoint) {
 
 export default defineConfig({
 	site,
+	adapter: vercel(),
 	integrations,
 });

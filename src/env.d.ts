@@ -2,6 +2,8 @@
 
 interface ImportMetaEnv {
 	readonly PUBLIC_SITE_URL?: string;
+	readonly PUBLIC_SUPABASE_URL?: string;
+	readonly PUBLIC_SUPABASE_PUBLISHABLE_KEY?: string;
 	readonly IMAGEKIT_URL_ENDPOINT?: string;
 	readonly IMAGEKIT_PUBLIC_KEY?: string;
 	readonly IMAGEKIT_PRIVATE_KEY?: string;
