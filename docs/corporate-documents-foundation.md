@@ -33,10 +33,10 @@ PUBLIC_SUPABASE_URL=
 PUBLIC_SUPABASE_PUBLISHABLE_KEY=
 ```
 
-PDF delivery also requires a server-only service-role key:
+PDF delivery also requires a server-only Supabase secret API key:
 
 ```text
-SUPABASE_SERVICE_ROLE_KEY=
+SUPABASE_SECRET_KEY=
 ```
 
 Rules for this key:
@@ -45,7 +45,7 @@ Rules for this key:
 - never commit a real value;
 - configure locally through ignored env files;
 - configure in Vercel only where PDF delivery is required;
-- use only in server-only files such as `src/lib/supabase/service-role.server.ts`;
+- use only in server-only files such as `src/lib/supabase/secret-key.server.ts`;
 - do not use it for normal browser-admin operations, which should use authenticated RLS.
 
 ## Public Index

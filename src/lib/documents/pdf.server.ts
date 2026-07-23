@@ -1,4 +1,4 @@
-import { createSupabaseServiceRoleClient, hasSupabaseServiceRoleConfig } from '@lib/supabase/service-role.server';
+import { createSupabaseSecretKeyClient, hasSupabaseSecretKeyConfig } from '@lib/supabase/secret-key.server';
 import { getPublicCorporateDocumentBySlug, isDocumentSlug } from './public';
 
 type PdfResult =
@@ -34,13 +34,13 @@ export async function getPublishedDocumentPdf(slug: string, includeBody: boolean
 		return { status: 'not-found' };
 	}
 
-	if (!hasSupabaseServiceRoleConfig()) {
+	if (!hasSupabaseSecretKeyConfig()) {
 		const publicDocument = await getPublicCorporateDocumentBySlug(slug);
 
 		return publicDocument ? { status: 'unavailable' } : { status: 'not-found' };
 	}
 
-	const supabase = createSupabaseServiceRoleClient();
+	const supabase = createSupabaseSecretKeyClient();
 	const { data: document, error: documentError } = await supabase
 		.from('corporate_documents')
 		.select('id, current_version_id, published_at, updated_at')

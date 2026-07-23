@@ -13,7 +13,7 @@ PUBLIC_SUPABASE_URL=
 PUBLIC_SUPABASE_PUBLISHABLE_KEY=
 ```
 
-These values are safe for browser use. Do not commit or expose service-role
+These values are safe for browser use. Do not commit or expose Supabase secret
 keys, database passwords, ImageKit private keys, access tokens, or Supabase
 personal tokens.
 
@@ -47,5 +47,7 @@ policy.
 - Admin routes set `noindex,nofollow`.
 - Auth routes set `Cache-Control: private, no-store`.
 - Same-origin POST checks are used for login and logout.
-- No service-role key is used in the Astro runtime.
+- Admin authentication uses only the public Supabase client and RLS. Phase 2
+  adds a separate server-only `SUPABASE_SECRET_KEY` only for private PDF
+  delivery.
 - Public site content remains local in `src/data/site.ts`.
