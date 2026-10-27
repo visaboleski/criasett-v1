@@ -8,6 +8,7 @@ supabase/.temp/
 .env.local
 .DS_Store
 Thumbs.db
+desktop.ini
 *.log
 
 # Generated visual QA screenshots. Production assets belong in public/.
