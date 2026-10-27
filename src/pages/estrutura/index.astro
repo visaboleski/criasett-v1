@@ -1,60 +1,99 @@
 ---
-import CtaBand from '@components/CtaBand.astro';
-import PageHero from '@components/PageHero.astro';
-import SectionHeader from '@components/SectionHeader.astro';
+import StructureVisual from '@components/StructureVisual.astro';
 import BaseLayout from '@layouts/BaseLayout.astro';
-import { structureAreas } from '@data/site';
+
+const chapters = [
+	{
+		number: '01',
+		anchorId: 'projeto-desenvolvimento',
+		eyebrow: 'Da ideia à produção',
+		title: 'Projeto e Desenvolvimento',
+		visual: 'development',
+		paragraphs: [
+			'Desenvolvemos soluções gráficas que combinam apresentação, funcionalidade e viabilidade de produção. Nossa equipe oferece consultoria para a criação e o aprimoramento de embalagens e materiais promocionais, considerando as características de cada produto e as necessidades de cada cliente.',
+			'Com visualizações eletrônicas em 2D e 3D, antecipamos a apresentação do material e facilitamos a avaliação do projeto antes da produção do protótipo físico.',
+			'A partir dos desenhos digitais de faca, produzimos modelos em plotter de corte para avaliar dimensões, encaixes, montagem e estrutura. Também realizamos ajustes nas embalagens para adequá-las aos equipamentos e aos processos de envase e acondicionamento do cliente.'
+		]
+	},
+	{
+		number: '02',
+		anchorId: 'pre-impressao',
+		eyebrow: 'Precisão desde o início',
+		title: 'Pré-impressão',
+		visual: 'prepress',
+		paragraphs: [
+			'Precisão e agilidade começam antes da impressão. Nossa equipe de pré-impressão prepara e confere os arquivos para assegurar a correta reprodução dos elementos gráficos e a consistência das cores ao longo da produção.',
+			'Contamos com provas contratuais de cor, gerenciamento de cores pela norma ISO 12647 e gravação de chapas em CTP, com curvas de compensação de ganho de ponto ajustadas às condições de impressão e aos diferentes tipos de papel.',
+			'Completam essa etapa os recursos de retículas e a produção de mockups que simulam a apresentação e os acabamentos do material, proporcionando mais segurança na aprovação de cada projeto.'
+		]
+	},
+	{
+		number: '03',
+		anchorId: 'impressao',
+		eyebrow: 'Capacidade e controle',
+		title: 'Impressão',
+		visual: 'printing',
+		paragraphs: [
+			'Nosso parque gráfico conta com impressoras offset Heidelberg de alto desempenho, que aliam produtividade, definição de imagem e consistência de cores na produção de embalagens e materiais promocionais em papel e papel-cartão.',
+			'Para pequenas tiragens e projetos que exigem flexibilidade, também oferecemos impressão digital, com qualidade e agilidade para atender a diferentes demandas.',
+			'Integramos tecnologia e experiência técnica para escolher o processo de impressão mais adequado às características de cada trabalho.'
+		]
+	},
+	{
+		number: '04',
+		anchorId: 'acabamento',
+		eyebrow: 'Valorização em cada detalhe',
+		title: 'Acabamento',
+		visual: 'finishing',
+		paragraphs: [
+			'Os acabamentos valorizam o design, protegem o impresso e tornam a experiência com a marca ainda mais marcante.',
+			'Oferecemos diversas opções de laminação, como BOPP fosco, brilho, soft touch e antirrisco, além de PET metalizado, verniz à base de água e verniz UV localizado. Recursos como hot stamping, cold stamping, alto-relevo e braile ampliam as possibilidades de diferenciação de cada projeto.',
+			'Nossa estrutura também conta com corte e vinco e colagem de embalagens, unindo precisão, produtividade e cuidado com a apresentação final.'
+		]
+	},
+	{
+		number: '05',
+		anchorId: 'logistica',
+		eyebrow: 'O cuidado vai até a entrega',
+		title: 'Logística',
+		visual: 'logistics',
+		paragraphs: [
+			'Organizamos a etapa final com cuidado e eficiência para que os materiais cheguem ao destino com segurança, agilidade e dentro das necessidades de cada cliente. Nossa logística complementa todo o processo produtivo, garantindo que a qualidade construída em cada etapa se mantenha até a entrega.'
+		]
+	}
+] as const;
 ---
 
-<BaseLayout title="Estrutura" description="Estrutura produtiva da Gráfica Criasett: pré-impressão, impressão, acabamento, qualidade e logística.">
-	<PageHero
-		eyebrow="Estrutura"
-		title="Capacidade produtiva apresentada com clareza."
-		text="Esta página mostra como a produção se organiza da pré-impressão ao acabamento, sem transformar o site em uma lista técnica difícil de ler."
-	/>
-
-	<section class="section">
-		<div class="section__inner">
-			<SectionHeader
-				eyebrow="Processo"
-				title="Etapas pensadas para decisão B2B."
-				text="Cada área deve explicar o que faz, por que importa e como contribui para qualidade, prazo e confiança."
-			/>
-			<div class="structure-list">
-				{
-					structureAreas.map((area, index) => (
-						<article id={area.slug}>
-							<span>{String(index + 1).padStart(2, '0')}</span>
-							<div>
-								<h2>{area.title}</h2>
-								<p>{area.summary}</p>
-								<ul class="tag-list">
-									{area.highlights.map((highlight) => <li>{highlight}</li>)}
-								</ul>
-							</div>
-						</article>
-					))
-				}
+<BaseLayout title="Estrutura" description="Tecnologia, experiência e cuidado em cada etapa da estrutura produtiva da Criasett.">
+	<section class="structure-page-hero" aria-labelledby="structure-page-title">
+		<img class="structure-page-hero__image" src="/images/HERO DARK ESTRUTURA.png" alt="" aria-hidden="true" fetchpriority="high" />
+		<div class="home-container structure-page-hero__inner">
+			<div class="structure-page-hero__copy">
+				<h1 id="structure-page-title">Estrutura <span>Criasett</span></h1>
+				<p><strong>Tecnologia, experiência e cuidado</strong> em cada etapa para transformar ideias em embalagens e materiais gráficos que valorizam a sua marca.</p>
 			</div>
 		</div>
 	</section>
 
-	<section class="section section--muted">
-		<div class="section__inner split">
-			<SectionHeader
-				eyebrow="Próximas imagens"
-				title="Aqui entram fotos reais de máquina, equipe e acabamento."
-				text="O ideal é usar imagens claras, sem excesso de tratamento, mostrando produto, processo e escala. ImageKit entra depois para otimizar tudo."
-			/>
-			<div class="media-placeholder">
-				<span>Produção Criasett</span>
-			</div>
-		</div>
-	</section>
+	<div class="structure-chapters">
+		{chapters.map((chapter, index) => (
+			<section id={chapter.anchorId} class:list={['structure-chapter', index % 2 === 1 && 'structure-chapter--reverse']} aria-labelledby={`structure-chapter-${chapter.number}`}>
+				<div class="home-container structure-chapter__inner">
+					<div class="structure-chapter__copy">
+						<p class="structure-chapter__eyebrow">
+							<span>{chapter.number}</span>
+							<span class="structure-chapter__eyebrow-line" aria-hidden="true"></span>
+							<span>{chapter.eyebrow}</span>
+						</p>
+						<h2 id={`structure-chapter-${chapter.number}`}>{chapter.title}</h2>
+						<div class="structure-chapter__body">
+							{chapter.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+						</div>
+					</div>
 
-	<CtaBand
-		title="Quer transformar um projeto gráfico em produção?"
-		text="A página de contato vai centralizar orçamento, compras, RH, financeiro e compliance sem misturar todos os assuntos em um único formulário."
-	/>
+					<StructureVisual variant={chapter.visual} />
+				</div>
+			</section>
+		))}
+	</div>
 </BaseLayout>
-

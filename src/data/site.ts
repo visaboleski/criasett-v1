@@ -1,12 +1,13 @@
 export const siteMeta = {
-	name: 'Gráfica Criasett',
+	name: 'Criasett',
 	location: 'Santo André, SP',
 	description:
 		'Indústria gráfica em Santo André, SP, especializada em embalagens, materiais de PDV e promocionais.',
-	whatsappLabel: 'WhatsApp',
-	whatsappHref: 'https://wa.me/5500000000000',
-	email: 'comercial@graficacriasett.com.br',
-	address: 'Santo André, SP',
+	phone: '(11) 4996-5055',
+	email: 'atendimento@graficacriasett.com.br',
+	address: 'Rua Silveira Martins, 257 – Santa Terezinha, Santo André – SP, CEP 09210-520',
+	whatsappLabel: 'Telefone',
+	whatsappHref: 'tel:+551149965055',
 };
 
 export const homeContent = {

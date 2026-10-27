@@ -1,31 +1,81 @@
 ---
-import PageHero from '@components/PageHero.astro';
-import SectionHeader from '@components/SectionHeader.astro';
 import BaseLayout from '@layouts/BaseLayout.astro';
-import { policies } from '@data/site';
-
+import { policyLibraryItems } from '@data/policy-library';
+import { isValidPublicDocumentUrl } from '@lib/documents/public';
 ---
 
-<BaseLayout title="Políticas" description="Políticas públicas, PDFs e documentos institucionais da Gráfica Criasett.">
-	<PageHero
-		eyebrow="Transparência"
-		title="Políticas e documentos públicos."
-		text="Uma biblioteca organizada para substituir PDFs soltos por categorias, descrições e links claros."
-	/>
+<BaseLayout
+	title="Políticas"
+	description="Diretrizes que orientam o trabalho da Criasett e fortalecem suas relações com colaboradores, clientes, fornecedores e parceiros."
+>
+	<section class="policies-page-hero" aria-labelledby="policies-page-title">
+		<img
+			class="policies-page-hero__image"
+			src="/images/HERO POLITICAS.png"
+			alt=""
+			aria-hidden="true"
+			width="1672"
+			height="941"
+			fetchpriority="high"
+			decoding="async"
+		/>
+		<div class="home-container policies-page-hero__inner">
+			<div class="policies-page-hero__copy">
+				<h1 id="policies-page-title" class="policies-page-hero__title">
+					<span class="policies-page-hero__title-line">DIRETRIZES QUE</span>
+					<span class="policies-page-hero__title-line policies-page-hero__title-line--accent">ORIENTAM</span>
+					<span class="policies-page-hero__title-line policies-page-hero__title-line--accent">NOSSA ATUAÇÃO.</span>
+				</h1>
+				<p class="policies-page-hero__description">
+					Nossas políticas estabelecem princípios de <strong>qualidade, segurança, ética, integridade e responsabilidade socioambiental</strong>. São diretrizes que orientam nossas operações e relações com colaboradores, clientes, fornecedores e parceiros.
+				</p>
+			</div>
+		</div>
+	</section>
 
-	<section class="section">
-		<div class="section__inner">
-			<SectionHeader title="Biblioteca de políticas" text="A estrutura visual está pronta para receber PDFs reais quando a empresa enviar os documentos." />
-			<div class="policy-list">
+	<section class="policy-library" aria-label="Documentos institucionais">
+		<div class="home-container">
+			<div class="policy-library__grid">
 				{
-					policies.map((policy) => (
-						<article>
-							<p class="card-kicker">{policy.category}</p>
-							<h2>{policy.title}</h2>
-							{policy.description && <span>{policy.description}</span>}
-							<span class="muted-note">{policy.status}</span>
-						</article>
-					))
+					policyLibraryItems.map((item, index) => {
+						const publishedPdf =
+							item.publishedPdf && isValidPublicDocumentUrl(item.publishedPdf.publicUrl)
+								? item.publishedPdf
+								: null;
+
+						return (
+							<article class="policy-card" data-policy-slug={item.slug}>
+								<div class="policy-card__icon" aria-hidden="true">
+									<svg viewBox="0 0 32 32">
+										<path d="M8.5 3.5h10l5 5v20h-15z"></path>
+										<path d="M18.5 3.5v5h5M12.5 14h7M12.5 18h7M12.5 22h5"></path>
+									</svg>
+									<span>{String(index + 1).padStart(2, '0')}</span>
+								</div>
+								<h2>{item.title}</h2>
+								<p>{item.description}</p>
+								<footer class="policy-card__footer">
+									{
+										publishedPdf ? (
+											<a
+												class="policy-card__link"
+												href={publishedPdf.publicUrl}
+												target="_blank"
+												rel="noopener"
+												aria-label={`Visualizar documento: ${item.title}`}
+											>
+												Visualizar documento <span aria-hidden="true">↗</span>
+											</a>
+										) : (
+											<span class="policy-card__status">
+												<i aria-hidden="true"></i> Em breve
+											</span>
+										)
+									}
+								</footer>
+							</article>
+						);
+					})
 				}
 			</div>
 		</div>

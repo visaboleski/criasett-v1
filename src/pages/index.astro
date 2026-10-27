@@ -1,188 +1,142 @@
 ---
-import CtaBand from '@components/CtaBand.astro';
-import PortfolioGrid from '@components/PortfolioGrid.astro';
-import SectionHeader from '@components/SectionHeader.astro';
 import BaseLayout from '@layouts/BaseLayout.astro';
-import {
-	homeContent,
-	portfolioItems,
-	positioningCards,
-	productionFlow,
-	proofPoints,
-	quoteChecklist,
-	solutionGroups,
-	structureAreas,
-} from '@data/site';
-
-const home = homeContent;
-const featuredPortfolio = portfolioItems.slice(0, 3);
 ---
 
 <BaseLayout
-	title="Gráfica Criasett"
-	description="Gráfica Criasett: embalagens, PDV e materiais promocionais produzidos em Santo André, SP."
+	title="Criasett"
+	description="Embalagens e materiais promocionais desenvolvidos com qualidade, criatividade e tecnologia."
+	pageClass="home-page"
 >
-	<section class="hero">
-		<img class="hero__image" src="/images/industrial-print-hero.png" alt="Máquina gráfica industrial em operação" />
-		<div class="hero__shade" aria-hidden="true"></div>
-		<div class="hero__content">
-			<p class="eyebrow">{home.eyebrow}</p>
-			<h1>{home.headline}</h1>
-			<p class="hero__intro">{home.intro}</p>
-			<div class="button-row">
-				<a class="button button--primary" href={home.primaryCtaHref}>{home.primaryCtaLabel}</a>
-				<a class="button button--ghost" href={home.secondaryCtaHref}>{home.secondaryCtaLabel}</a>
+	<section class="home-hero">
+		<img class="home-hero__image" src="/images/CRIASETT HERO.png" alt="" fetchpriority="high" />
+		<div class="home-container home-hero__inner">
+			<div class="home-hero__copy">
+				<h1>
+					<span class="home-hero__title-strong">Soluções</span>
+					<span>que impulsionam</span>
+					<span class="home-hero__title-accent">sua marca.</span>
+				</h1>
+				<p>Embalagens e materiais promocionais desenvolvidos com <strong>qualidade, criatividade e tecnologia</strong> para destacar o seu produto em todos os pontos de contato.</p>
 			</div>
-			<div class="hero__process" aria-label="Fluxo de produção">
-				<span>Pré-impressão</span>
-				<span>Impressão</span>
-				<span>Acabamento</span>
-				<span>Entrega</span>
+		</div>
+		<div class="home-container credential-strip" aria-label="Experiência e credenciais">
+			<div class="credential-strip__inner">
+				<a class="credential" href="/criasett" aria-label="Mais de 30 anos de Criasett">
+					<svg class="credential__icon credential__icon--experience" viewBox="0 0 48 48" aria-hidden="true">
+						<circle cx="24" cy="20" r="11"></circle>
+						<path d="m18 30-2.5 12 8.5-4 8.5 4L30 30M24 14l1.9 3.8 4.1.6-3 2.9.7 4.1-3.7-2-3.7 2 .7-4.1-3-2.9 4.1-.6L24 14Z" class="credential__icon-accent"></path>
+					</svg>
+					<span class="credential__label">+ de 30 anos</span>
+				</a>
+				<a class="credential" href="/certificacoes" aria-label="ISO 9001 — ver certificações">
+					<svg class="credential__icon" viewBox="0 0 48 48" aria-hidden="true">
+						<path d="M24 5 39 11v11c0 10-6.1 17.3-15 21-8.9-3.7-15-11-15-21V11l15-6Z"></path>
+						<path d="m17 24 5 5 10-11"></path>
+					</svg>
+					<span class="credential__label">ISO 9001</span>
+				</a>
+				<a class="credential" href="/certificacoes" aria-label="FSC registrado — ver certificações">
+					<span class="credential__label">FSC<sup>®</sup></span>
+				</a>
+				<a class="credential" href="/certificacoes" aria-label="SMETA — ver práticas e auditorias">
+					<svg class="credential__icon" viewBox="0 0 48 48" aria-hidden="true">
+						<circle cx="24" cy="16" r="6"></circle>
+						<circle cx="11" cy="20" r="4"></circle>
+						<circle cx="37" cy="20" r="4"></circle>
+						<path d="M13 38v-3c0-6.1 4.9-11 11-11s11 4.9 11 11v3M4 37v-2c0-4.4 3.6-8 8-8h2M44 37v-2c0-4.4-3.6-8-8-8h-2"></path>
+					</svg>
+					<span class="credential__label">SMETA</span>
+				</a>
 			</div>
 		</div>
 	</section>
 
-	<section class="credibility-band" aria-label="Diferenciais">
-		{
-			home.credibility.map((item) => (
+	<div class="middle-canvas">
+	<section class="home-section about-preview">
+		<div class="home-container about-preview__inner">
+			<div class="about-preview__watermark" aria-hidden="true">
+				<img
+					src="/images/CMYK Printing Press Blueprint Ribbons.png"
+					alt=""
+					width="2172"
+					height="724"
+					loading="lazy"
+					decoding="async"
+				/>
+			</div>
+			<div class="about-preview__copy">
+				<p class="home-eyebrow">A Criasett</p>
+				<h2>Mais de 30 anos construindo confiança através da excelência gráfica.</h2>
+				<p>A Criasett é uma indústria gráfica do Grande ABC Paulista, especializada em embalagens e materiais promocionais. Unimos experiência, tecnologia e atenção aos detalhes para transformar projetos em soluções de valor.</p>
+				<a class="home-text-link" href="/criasett">Conheça a Criasett <span aria-hidden="true">→</span></a>
+			</div>
+		</div>
+	</section>
+
+	<section class="home-section structure-preview">
+		<div class="home-container">
+			<div class="structure-preview__top">
+				<div class="structure-preview__intro">
+					<p class="home-eyebrow">Nossa Estrutura</p>
+					<h2>Precisão em cada etapa.</h2>
+					<p>Processos integrados e uma equipe especializada garantem qualidade, agilidade e a melhor solução para cada projeto.</p>
+				</div>
+			</div>
+			<div class="process-rail">
+				<a class="process-tile" href="/estrutura#projeto-desenvolvimento">
+					<div class="process-tile__icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="m6 10 10-5 10 5-10 5zM6 10v12l10 5 10-5V10M16 15v12"></path></svg></div>
+					<div><h3>Projeto e Desenvolvimento</h3><p>Desenvolvimento técnico de soluções de acordo com cada projeto.</p></div>
+				</a>
+				<a class="process-tile" href="/estrutura#pre-impressao">
+					<div class="process-tile__icon" aria-hidden="true"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="9"></circle><circle cx="16" cy="16" r="4"></circle><path d="M16 4V1M16 31v-3M4 16H1M31 16h-3M23 9l5-5"></path></svg></div>
+					<div><h3>Pré-impressão</h3><p>Preparação e conferência de arquivos para produção.</p></div>
+				</a>
+				<a class="process-tile" href="/estrutura#impressao">
+					<div class="process-tile__icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M8 12V3h16v9M8 24H4V12h24v12h-4M8 19h16v10H8zM23 16h1"></path></svg></div>
+					<div><h3>Impressão</h3><p>Offset e digital com alto controle de cor.</p></div>
+				</a>
+				<a class="process-tile" href="/estrutura#acabamento">
+					<div class="process-tile__icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="m4 7 8-3 8 4 8-3v20l-8 3-8-4-8 3zM12 4v20M20 8v20"></path></svg></div>
+					<div><h3>Acabamento</h3><p>Recursos que agregam valor e diferenciação.</p></div>
+				</a>
+				<a class="process-tile" href="/estrutura#logistica">
+					<div class="process-tile__icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M3 7h17v16H3zM20 13h5l4 5v5h-4M7 23a3 3 0 1 0 6 0M20 23a3 3 0 1 0 6 0"></path></svg></div>
+					<div><h3>Logística</h3><p>Entrega organizada com eficiência e cuidado.</p></div>
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="home-section products-preview">
+		<div class="home-container">
+			<div class="products-preview__heading">
 				<div>
-					<strong>{item.value}</strong>
-					<span>{item.label}</span>
+					<p class="home-eyebrow">Soluções</p>
+					<h2>Nossos Produtos</h2>
 				</div>
-			))
-		}
-	</section>
-
-	<section class="section">
-		<div class="section__inner">
-			<SectionHeader
-				eyebrow="Soluções"
-				title="Impressos para embalagem, varejo e campanhas."
-				text="A primeira leitura do site precisa ser comercial: o cliente entende rapidamente o que pode pedir, onde aquilo se aplica e como avançar para orçamento."
-			/>
-			<div class="solution-grid">
-				{
-					solutionGroups.map((solution) => (
-						<article class={`solution-card accent-${solution.accent}`}>
-							<div>
-								<p class="card-kicker">Solução</p>
-								<h3>{solution.title}</h3>
-								<p>{solution.text}</p>
-							</div>
-							<ul class="tag-list">
-								{solution.items.map((item) => <li>{item}</li>)}
-							</ul>
-							<a class="text-link card-link" href={solution.href}>Ver exemplo</a>
-						</article>
-					))
-				}
+				<p>Criamos embalagens e materiais promocionais que unem funcionalidade, qualidade e design para valorizar cada marca.</p>
+			</div>
+			<div class="product-gateways">
+				<a class="product-gateway product-gateway--packaging" href="/produtos/embalagens">
+					<div class="product-gateway__visual"><img src="/images/EMBALAGENS.png" alt="Exemplos de embalagens produzidas pela Criasett" loading="lazy" /></div>
+					<div class="product-gateway__content">
+						<p class="product-gateway__index">01</p>
+						<h3>Embalagens</h3>
+						<p>Soluções em papel-cartão para diversos segmentos.</p>
+						<span class="product-gateway__arrow" aria-hidden="true">→</span>
+					</div>
+				</a>
+				<a class="product-gateway product-gateway--promotional" href="/produtos/promocionais">
+					<div class="product-gateway__visual"><img src="/images/PROMOCIONAIS.png" alt="Exemplos de materiais promocionais produzidos pela Criasett" loading="lazy" /></div>
+					<div class="product-gateway__content">
+						<p class="product-gateway__index">02</p>
+						<h3>Promocionais</h3>
+						<p>Materiais que fortalecem sua marca no ponto de venda.</p>
+						<span class="product-gateway__arrow" aria-hidden="true">→</span>
+					</div>
+				</a>
 			</div>
 		</div>
 	</section>
-
-	<section class="section section--muted">
-		<div class="section__inner split">
-			<SectionHeader
-				eyebrow="Posicionamento"
-				title="Processo gráfico apresentado sem ruído."
-				text="A presença digital precisa mostrar, em poucos segundos, que a Criasett não é uma gráfica genérica: é estrutura produtiva, método e confiança para empresas."
-			/>
-			<div class="proof-list">
-				{
-					positioningCards.map((card) => (
-						<article>
-							<span>{card.mark}</span>
-							<h3>{card.title}</h3>
-							<p>{card.text}</p>
-						</article>
-					))
-				}
-			</div>
-		</div>
-	</section>
-
-	<section class="section process-section" id="estrutura">
-		<div class="section__inner process-layout">
-			<div>
-				<SectionHeader
-					eyebrow="Estrutura"
-					title="Da pré-impressão à expedição."
-					text="Uma área para apresentar capacidade produtiva, equipamentos, controle de qualidade e etapas do processo de forma visual e objetiva."
-				/>
-				<div class="process-grid">
-					{
-						structureAreas.map((area, index) => (
-							<article>
-								<span>{String(index + 1).padStart(2, '0')}</span>
-								<h3>{area.title}</h3>
-								<p>{area.summary}</p>
-							</article>
-						))
-					}
-				</div>
-				<a class="text-link section-link" href="/estrutura">Ver estrutura completa</a>
-			</div>
-			<div class="press-sheet" aria-label="Fluxo de produção">
-				{productionFlow.map((step) => (
-					<article>
-						<span>{step.step}</span>
-						<h3>{step.title}</h3>
-						<p>{step.text}</p>
-					</article>
-				))}
-			</div>
-		</div>
-	</section>
-
-	<section class="section">
-		<div class="section__inner">
-			<div class="section-row">
-				<SectionHeader
-					eyebrow="Portfólio"
-					title="Categorias com leitura rápida."
-					text="O portfólio começa organizado por Embalagem, PDV e Promocional, com espaço para fotos reais via ImageKit."
-				/>
-				<a class="text-link" href="/portfolio">Ver portfólio completo</a>
-			</div>
-			<PortfolioGrid items={featuredPortfolio} />
-		</div>
-	</section>
-
-	<section class="section section--muted">
-		<div class="section__inner split">
-			<div>
-				<SectionHeader
-					eyebrow="Confiança"
-					title="O site deve responder antes do primeiro contato."
-					text="Para uma indústria gráfica B2B, bom design não é enfeite: é organizar decisão, risco, prazo, aplicação e acabamento."
-				/>
-				<div class="proof-columns">
-					{
-						proofPoints.map((point) => (
-							<article>
-								<h3>{point.title}</h3>
-								<p>{point.text}</p>
-							</article>
-						))
-					}
-				</div>
-			</div>
-			<aside class="quote-checklist">
-				<p class="eyebrow">Para orçamento</p>
-				<h2>O que enviar para acelerar a resposta</h2>
-				<ul>
-					{quoteChecklist.map((item) => <li>{item}</li>)}
-				</ul>
-				<a class="button button--primary" href="/contato">Preparar orçamento</a>
-			</aside>
-		</div>
-	</section>
-
-	<CtaBand
-		eyebrow="Políticas e compliance"
-		title="PDFs e documentos públicos em uma biblioteca organizada."
-		text="Em vez de arquivos soltos, as políticas ganham categorias, descrições e links claros para qualidade, sustentabilidade, privacidade e canal de denúncias."
-		href="/politicas"
-		label="Acessar políticas"
-	/>
+	</div>
 </BaseLayout>

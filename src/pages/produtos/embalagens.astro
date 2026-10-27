@@ -1,0 +1,132 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+
+const categories = [
+	{
+		number: '01',
+		eyebrow: 'Performance no envase',
+		title: 'Cartuchos para Envase Automático ou Manual',
+		image: '/images/cartucho-transparente.png',
+		alt: 'Cartucho em papel-cartão desenvolvido pela Criasett',
+		paragraphs: [
+			'As embalagens da Criasett são desenvolvidas e produzidas para oferecer o melhor desempenho no envase de seus produtos, em processos automáticos ou manuais.',
+			'Trabalhamos com uma ampla variedade de cartões, incluindo duplex, triplex e opções com fibras pós-consumo, de fabricantes nacionais e internacionais.',
+			'Selecionamos os materiais e a estrutura de cada embalagem conforme as características do produto e as necessidades da sua linha de envase.',
+		],
+	},
+	{
+		number: '02',
+		eyebrow: 'Visibilidade no ponto de venda',
+		title: 'Embalagens Expositoras',
+		image: '/images/embalagem-expositora-transparente.png',
+		alt: 'Embalagem expositora em papel-cartão com visor frontal',
+		paragraphs: [
+			'Desenvolvidas em papel-cartão, as embalagens expositoras da Criasett contam com alça superior para exposição em gôndolas e painéis.',
+			'A janela frontal com visor de acetato transparente permite visualizar o produto sem abrir a embalagem, valorizando sua apresentação e facilitando a escolha do consumidor.',
+			'Os formatos, materiais e acabamentos podem ser personalizados conforme as necessidades de cada projeto.',
+		],
+	},
+	{
+		number: '03',
+		eyebrow: 'Organização e destaque',
+		title: 'Display Expositor para Gôndola ou Balcão',
+		image: '/images/display-transparente.png',
+		alt: 'Display expositor em papel-cartão para gôndola ou balcão',
+		paragraphs: [
+			'Os displays expositores da Criasett valorizam sua marca e organizam seus produtos no ponto de venda. Com bandeja aberta e painel de comunicação personalizado, proporcionam visibilidade e fácil acesso aos itens em gôndolas e balcões.',
+			'Produzidos com materiais à base de papel, combinam rigidez, durabilidade e possibilidade de reciclagem após o uso. Cada projeto é dimensionado conforme a quantidade, o formato e o peso dos produtos, com impressão e acabamentos alinhados à identidade da sua marca.',
+		],
+	},
+	{
+		number: '04',
+		eyebrow: 'Experiência de marca',
+		title: 'Sacolas',
+		image: '/images/sacola-transparente.png',
+		alt: 'Sacola premium em papel produzida pela Criasett',
+		secondaryImage: '/images/sacola-boca-palhaco-transparente.png',
+		secondaryAlt: 'Sacola em papel-cartão com alça recortada',
+		paragraphs: [
+			'As sacolas da Criasett unem apresentação, resistência e valorização da marca em cada entrega. Produzidas em papel e papel-cartão, podem ser desenvolvidas para ações promocionais, eventos, varejo e embalagens premium.',
+			'Oferecemos diferentes formatos, estruturas e acabamentos, criando soluções que enriquecem a experiência do consumidor e ampliam a presença da sua marca no ponto de contato.',
+			'Cada projeto é dimensionado conforme o peso, o volume e a proposta visual do produto, com impressão e detalhes alinhados à identidade de cada cliente.',
+		],
+	},
+	{
+		number: '05',
+		eyebrow: 'Valor em cada detalhe',
+		title: 'Enobrecimentos e Acabamentos Especiais',
+		image: '/images/embalagem-holografica-transparente.png',
+		alt: 'Embalagem com acabamento holográfico e detalhes especiais',
+		paragraphs: [
+			'A Criasett oferece uma ampla variedade de enobrecimentos para valorizar sua embalagem e destacar sua marca: laminações BOPP fosca e brilho, PET metalizado, soft touch e antirrisco, além de verniz à base de água, UV reserva, hot stamping, cold stamping, alto-relevo e braile.',
+			'Com um moderno parque gráfico, combinamos tecnologia e cuidado em cada detalhe para criar embalagens com efeitos visuais e táteis, conforme as necessidades de cada projeto.',
+		],
+	},
+];
+---
+
+<BaseLayout title="Embalagens" description="Soluções Criasett em embalagens de papel e papel-cartão.">
+	<section class="packaging-hero" aria-labelledby="packaging-hero-title">
+		<img
+			class="packaging-hero__image"
+			src="/images/hero embalagens.png"
+			alt="Embalagens desenvolvidas pela Criasett para diferentes segmentos"
+			fetchpriority="high"
+		/>
+		<div class="home-container packaging-hero__inner">
+			<div class="packaging-hero__copy">
+				<h1 id="packaging-hero-title">
+					<span>Embalagens</span>
+					<span>Para diferentes</span>
+					<span>segmentos.</span>
+				</h1>
+				<div class="packaging-hero__body">
+					<p>Produzimos embalagens para setores como: <strong>alimentos, bebidas, cosméticos, bem-estar e pet</strong>, unindo apresentação, funcionalidade e excelência gráfica.</p>
+					<p>Com materiais selecionados e <strong>acabamentos especiais</strong>, criamos soluções gráficas que valorizam o produto e fortalecem a sua marca.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<div class="packaging-categories">
+		{categories.map((category, index) => (
+			<section
+				class:list={['packaging-category', index % 2 === 1 && 'packaging-category--reverse']}
+				aria-labelledby={`packaging-category-${category.number}`}
+			>
+				<div class="home-container packaging-category__inner">
+					<figure class:list={['packaging-category__media', category.secondaryImage && 'packaging-category__media--duo']}>
+						<img
+							class="packaging-category__image packaging-category__image--primary"
+							src={category.image}
+							alt={category.alt}
+							loading="lazy"
+							decoding="async"
+						/>
+						{category.secondaryImage && (
+							<img
+								class="packaging-category__image packaging-category__image--secondary"
+								src={category.secondaryImage}
+								alt={category.secondaryAlt}
+								loading="lazy"
+								decoding="async"
+							/>
+						)}
+					</figure>
+
+					<div class="packaging-category__copy">
+						<p class="packaging-category__eyebrow">
+							<span>{category.number}</span>
+							<i aria-hidden="true"></i>
+							<strong>{category.eyebrow}</strong>
+						</p>
+						<h2 id={`packaging-category-${category.number}`}>{category.title}</h2>
+						<div class="packaging-category__body">
+							{category.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+						</div>
+					</div>
+				</div>
+			</section>
+		))}
+	</div>
+</BaseLayout>

@@ -1,82 +1,123 @@
 ---
-import PageHero from '@components/PageHero.astro';
-import SectionHeader from '@components/SectionHeader.astro';
 import BaseLayout from '@layouts/BaseLayout.astro';
-import { departments, quoteChecklist, siteMeta, solutionGroups } from '@data/site';
+
+const departments = [
+	{ title: 'Comercial', email: 'atendimento@graficacriasett.com.br', accent: 'cyan' },
+	{ title: 'Orçamento', email: 'orcamento@graficacriasett.com.br', accent: 'magenta' },
+	{ title: 'Financeiro', email: 'financeiro@graficacriasett.com.br', accent: 'yellow' },
+	{ title: 'Fiscal', email: 'faturamento@graficacriasett.com.br', accent: 'navy' },
+	{ title: 'Compras', email: 'compras2@graficacriasett.com.br', accent: 'cyan' },
+	{ title: 'Recursos Humanos', email: 'rh@graficacriasett.com.br', accent: 'magenta' },
+] as const;
+
+const socialProfiles = [
+	{ name: 'Instagram', handle: '@criasett', type: 'instagram', href: 'https://www.instagram.com/criasett/' },
+	{ name: 'Facebook', handle: '@criasett', type: 'facebook', href: 'https://www.facebook.com/criasett/' },
+	{ name: 'LinkedIn', handle: '/company/criasett-indústria-gráfica/', type: 'linkedin', href: 'https://www.linkedin.com/company/criasett-ind%C3%BAstria-gr%C3%A1fica/' },
+] as const;
 ---
 
-<BaseLayout title="Contato" description="Fale com a Gráfica Criasett: comercial, compras, RH, financeiro e compliance.">
-	<PageHero
-		eyebrow="Contato"
-		title="Fale com a área certa e envie um briefing melhor."
-		text="A página de contato organiza orçamento, compras, RH, financeiro e compliance sem misturar todos os assuntos em um único canal."
-	/>
-
-	<section class="section">
-		<div class="section__inner contact-layout">
-			<div>
-				<SectionHeader
-					eyebrow="Atendimento"
-					title="Canais por assunto"
-					text="Por enquanto usamos contatos locais. Quando a empresa confirmar e-mails e telefones oficiais, atualizamos aqui ou migramos estes campos para o admin."
-				/>
-				<div class="department-list">
-					{
-						departments.map((department) => (
-							<article>
-								<h2>{department.title}</h2>
-								{department.description && <p>{department.description}</p>}
-								{department.email && <a href={`mailto:${department.email}`}>{department.email}</a>}
-							</article>
-						))
-					}
-				</div>
+<BaseLayout
+	title="Contato"
+	description="Entre em contato com a Criasett por telefone, e-mail ou através de nossos canais de atendimento."
+>
+	<section class="contact-page-hero" aria-labelledby="contact-page-title">
+		<img class="contact-page-hero__image" src="/images/HERO CONTATOS IMAGE.png" alt="" aria-hidden="true" fetchpriority="high" />
+		<div class="home-container contact-page-hero__inner">
+			<div class="contact-page-hero__copy">
+				<h1 id="contact-page-title" class="contact-page-hero__statement">
+					<span class="contact-page-hero__line">ESTAMOS SEMPRE</span>
+					<span class="contact-page-hero__line">À DISPOSIÇÃO PARA</span>
+					<span class="contact-page-hero__line contact-page-hero__accent">ATENDER VOCÊ.</span>
+				</h1>
+				<p class="contact-page-hero__intro">Nossa equipe está pronta para atender sua empresa com <strong>agilidade, qualidade e soluções gráficas sob medida.</strong> Entre em contato com o setor adequado ou acompanhe nossas novidades pelas redes sociais.</p>
 			</div>
-
-			<aside class="contact-panel">
-				<p class="eyebrow">Orçamento</p>
-				<h2>Comece com as informações principais</h2>
-				<p>
-					Quando escolhermos o provedor de e-mail, este formulário será ligado a um endpoint seguro no Vercel.
-					Por enquanto ele serve como modelo do fluxo.
-				</p>
-				<form class="contact-form">
-					<label>
-						Nome e empresa
-						<input type="text" name="name" autocomplete="name" />
-					</label>
-					<label>
-						E-mail
-						<input type="email" name="email" autocomplete="email" />
-					</label>
-					<label>
-						Tipo de material
-						<select name="projectType">
-							<option value="">Selecione</option>
-							{solutionGroups.map((solution) => <option value={solution.title}>{solution.title}</option>)}
-						</select>
-					</label>
-					<label>
-						Briefing inicial
-						<textarea name="message" rows="6" placeholder="Conte formato, tiragem, prazo, acabamento e referências."></textarea>
-					</label>
-					<button class="button button--primary" type="button">Enviar em breve</button>
-				</form>
-				<a class="muted-note" href={siteMeta.whatsappHref}>{siteMeta.whatsappLabel}</a>
-			</aside>
 		</div>
 	</section>
 
-	<section class="section section--muted">
-		<div class="section__inner quote-layout">
-			<SectionHeader
-				eyebrow="Briefing"
-				title="Quanto melhor o envio, mais precisa a resposta."
-				text="Este bloco já prepara o site para orientar clientes antes do contato comercial."
-			/>
-			<ul class="quote-list">
-				{quoteChecklist.map((item) => <li>{item}</li>)}
-			</ul>
+	<section class="contact-channels" aria-labelledby="contact-channels-title">
+		<div class="home-container">
+			<div class="contact-section-heading">
+				<p class="home-eyebrow">Fale conosco</p>
+				<h2 id="contact-channels-title">Nossos Canais de Contato</h2>
+			</div>
+
+			<div class="contact-primary-grid">
+				<a class="contact-primary-card contact-primary-card--phone" href="tel:+551149965055">
+					<span class="contact-card-icon" aria-hidden="true">
+						<svg viewBox="0 0 48 48"><path d="M15 6h-4a4 4 0 0 0-4 4c0 17.1 13.9 31 31 31a4 4 0 0 0 4-4v-4l-9-3-2 5c-7.4-2.6-13.3-8.5-16-16l5-2-3-9-2-2Z"></path></svg>
+					</span>
+					<span class="contact-card-copy">
+						<strong>Telefone</strong>
+						<span>(11) 4996-5055</span>
+					</span>
+					<span class="contact-card-arrow" aria-hidden="true">↗</span>
+				</a>
+
+				<a
+					class="contact-primary-card contact-primary-card--address"
+					href="https://www.google.com/maps/search/?api=1&query=Rua+Silveira+Martins%2C+257%2C+Santa+Terezinha%2C+Santo+Andr%C3%A9%2C+SP%2C+09210-520"
+					target="_blank"
+					rel="noopener noreferrer"
+					aria-label="Abrir o endereço da Criasett no Google Maps"
+				>
+					<span class="contact-card-icon" aria-hidden="true">
+						<svg viewBox="0 0 48 48"><path d="M24 44s14-13.4 14-26A14 14 0 1 0 10 18c0 12.6 14 26 14 26Z"></path><circle cx="24" cy="18" r="5"></circle></svg>
+					</span>
+					<span class="contact-card-copy">
+						<strong>Endereço</strong>
+						<address>Rua Silveira Martins, 257<br />Santa Terezinha — Santo André — SP<br />CEP: 09210-520</address>
+					</span>
+					<span class="contact-card-arrow" aria-hidden="true">↗</span>
+				</a>
+			</div>
+
+			<div class="contact-department-grid">
+				{departments.map((department) => (
+					<a class={`contact-department-card contact-department-card--${department.accent}`} href={`mailto:${department.email}`}>
+						<span class="contact-department-card__icon" aria-hidden="true">
+							<svg viewBox="0 0 48 48"><rect x="6" y="11" width="36" height="27" rx="3"></rect><path d="m8 14 16 13 16-13"></path></svg>
+						</span>
+						<span class="contact-department-card__copy">
+							<strong>{department.title}</strong>
+							<span>{department.email}</span>
+						</span>
+						<span class="contact-card-arrow" aria-hidden="true">↗</span>
+					</a>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section class="contact-socials" aria-labelledby="contact-socials-title">
+		<div class="home-container">
+			<div class="contact-section-heading">
+				<p class="home-eyebrow">Acompanhe a Criasett</p>
+				<h2 id="contact-socials-title">Nossas Redes Sociais</h2>
+			</div>
+
+			<div class="contact-social-grid">
+				{socialProfiles.map((profile) => (
+					<a
+						class="contact-social-card"
+						href={profile.href}
+						target="_blank"
+						rel="noopener noreferrer"
+						aria-label={`Abrir o perfil da Criasett no ${profile.name}`}
+					>
+						<span class={`contact-social-card__icon contact-social-card__icon--${profile.type}`} aria-hidden="true">
+							{profile.type === 'instagram' && <svg viewBox="0 0 48 48"><rect x="6" y="6" width="36" height="36" rx="10"></rect><circle cx="24" cy="24" r="8"></circle><circle cx="35" cy="13" r="2"></circle></svg>}
+							{profile.type === 'facebook' && <svg viewBox="0 0 48 48"><path d="M28 43V26h6l1-7h-7v-4c0-2 1-4 4-4h4V5c-1-.2-3-.5-6-.5-6 0-10 3.7-10 10.5v4h-6v7h6v17"></path></svg>}
+							{profile.type === 'linkedin' && <svg viewBox="0 0 48 48"><rect x="7" y="18" width="7" height="23"></rect><circle cx="10.5" cy="9.5" r="4"></circle><path d="M21 41V18h7v3c2-2.5 5-4 8-4 6 0 8 4 8 11v13h-7V29c0-4-1-6-4-6s-5 2-5 7v11h-7Z"></path></svg>}
+						</span>
+						<span class="contact-social-card__copy">
+							<strong>{profile.name}</strong>
+							<span>{profile.handle}</span>
+						</span>
+						<span class="contact-card-arrow" aria-hidden="true">↗</span>
+					</a>
+				))}
+			</div>
 		</div>
 	</section>
 </BaseLayout>

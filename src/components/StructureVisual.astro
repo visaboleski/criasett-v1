@@ -1,0 +1,85 @@
+---
+interface Props {
+	variant: 'development' | 'prepress' | 'printing' | 'finishing' | 'logistics';
+}
+
+const { variant } = Astro.props;
+---
+
+<figure class={`structure-visual structure-visual--${variant}`} aria-hidden="true">
+	{variant === 'development' && (
+		<svg viewBox="0 0 520 390">
+			<defs>
+				<linearGradient id="development-front" x1="0" y1="0" x2="1" y2="1">
+					<stop offset="0" stop-color="#fbfdfe" />
+					<stop offset="1" stop-color="#e7f0f5" />
+				</linearGradient>
+				<linearGradient id="development-side" x1="0" y1="0" x2="1" y2="1">
+					<stop offset="0" stop-color="#eef5f8" />
+					<stop offset="1" stop-color="#dce8ee" />
+				</linearGradient>
+			</defs>
+
+			<circle class="visual-technical visual-technical--dashed" cx="270" cy="198" r="142" />
+			<path class="visual-technical" d="M72 293h376M104 98v226M432 92v215" />
+			<path class="visual-grid" d="M104 119h328v174H104z" />
+			<path class="development-guide" d="M259 46v292M76 198h370" />
+
+			<g class="development-box">
+				<path class="development-face development-face--front" d="m213 196 61 35v111l-61-36V196Z" />
+				<path class="development-face development-face--side" d="m274 231 77-44v110l-77 45V231Z" />
+				<path class="development-face development-face--inside" d="m213 196 77-44 61 35-77 44-61-35Z" />
+				<path class="development-flap" d="m213 196-65-38 76-44 66 38-77 44Z" />
+				<path class="development-flap" d="m290 152 64-37 62 36-65 36-61-35Z" />
+				<path class="development-flap development-flap--back" d="m224 114 1-65 64-16 1 119-66-38Z" />
+				<path class="visual-main" d="m213 196 61 35 77-44-61-35-77 44Zm0 0v110l61 36 77-45V187m-77 44v111M213 196l-65-38 76-44m66 38 64-37 62 36-65 36M224 114l1-65 64-16 1 119" />
+			</g>
+
+			<path class="visual-accent visual-accent--cyan" d="M326 58h78" />
+			<path class="visual-accent visual-accent--magenta" d="M404 58h34" />
+			<g class="development-mark">
+				<path d="M66 112v26M53 125h26M104 314v22M93 325h22M435 168v24M423 180h24" />
+			</g>
+		</svg>
+	)}
+
+	{variant === 'prepress' && (
+		<svg viewBox="0 0 520 390">
+			<circle class="visual-grid" cx="242" cy="186" r="142" />
+			<circle class="visual-grid" cx="242" cy="186" r="108" />
+			<circle class="visual-grid" cx="242" cy="186" r="70" />
+			<circle class="visual-main" cx="242" cy="186" r="12" />
+			<path class="visual-grid" d="M242 28v316M84 186h316" />
+			<g transform="rotate(-9 260 275)">
+				<rect class="visual-paper" x="98" y="246" width="326" height="82" rx="4" />
+				<rect class="fill-cyan" x="120" y="270" width="62" height="28" />
+				<rect class="fill-magenta" x="182" y="270" width="62" height="28" />
+				<rect class="fill-yellow" x="244" y="270" width="62" height="28" />
+				<rect class="fill-navy" x="306" y="270" width="88" height="28" />
+			</g>
+			<path class="visual-accent visual-accent--cyan" d="M430 94h42M451 73v42" />
+		</svg>
+	)}
+
+	{variant === 'printing' && (
+		<img class="structure-visual__image structure-visual__image--printing" src="/images/estrutura-impressao.png" alt="" loading="lazy" decoding="async" />
+	)}
+
+	{variant === 'finishing' && (
+		<img class="structure-visual__image structure-visual__image--finishing" src="/images/novo acabamento.png" alt="" loading="lazy" decoding="async" />
+	)}
+
+	{variant === 'logistics' && (
+		<svg viewBox="0 0 520 390">
+			<path class="visual-route" d="M62 252c60 0 55-88 119-88 52 0 69 63 117 63" />
+			<circle class="visual-grid" cx="62" cy="252" r="20" />
+			<circle class="visual-main" cx="62" cy="252" r="6" />
+			<path class="visual-main" d="m298 162 78-45 82 47-80 47-80-49Zm0 0v94l80 47 80-47v-92m-80 47v92" />
+			<path class="visual-tape" d="m342 137 81 47v35" />
+			<path class="visual-accent visual-accent--cyan" d="M84 314h76" />
+			<path class="visual-accent visual-accent--magenta" d="M396 74h70" />
+			<circle class="visual-grid" cx="474" cy="92" r="22" />
+			<path class="visual-grid" d="M474 80v24M462 92h24" />
+		</svg>
+	)}
+</figure>

@@ -1,23 +1,70 @@
 ---
-import { siteMeta, solutionGroups } from '@data/site';
+import { siteMeta } from '@data/site';
 
 const year = new Date().getFullYear();
+const footerNavItems = [
+	{ href: '/', label: 'Home' },
+	{ href: '/criasett', label: 'A Criasett' },
+	{ href: '/estrutura', label: 'Estrutura' },
+	{ href: '/produtos', label: 'Produtos' },
+	{ href: '/certificacoes', label: 'Certificações' },
+	{ href: '/politicas', label: 'Políticas' },
+	{ href: '/contato', label: 'Contato' },
+];
 ---
 
 <footer class="site-footer">
-	<div class="site-footer__intro">
-		<p class="footer-brand">{siteMeta.name}</p>
-		<p>{siteMeta.description}</p>
+	<svg class="site-footer__decoration" viewBox="0 0 1440 230" preserveAspectRatio="none" aria-hidden="true">
+		<path class="footer-curve footer-curve--soft" d="M-90 212C190 48 430 46 690 166s525 100 840-84"></path>
+		<path class="footer-curve footer-curve--cyan" d="M-90 221C194 57 433 55 694 175s526 99 839-83"></path>
+		<path class="footer-curve footer-curve--magenta" d="M-90 226C196 62 435 60 697 180s526 99 839-82"></path>
+		<path class="footer-curve footer-curve--yellow" d="M-90 231C198 67 437 65 700 185s526 99 839-81"></path>
+	</svg>
+
+	<div class="site-footer__inner">
+		<div class="site-footer__brand footer-column">
+			<a class="footer-brand-link" href="/" aria-label="Criasett — página inicial">
+				<img class="footer-brand__logo" src="/images/Criasett_logo_Branco.png" alt="Criasett Indústria Gráfica" loading="lazy" />
+			</a>
+			<p class="footer-signature">
+				<span>Embalagens</span><i aria-hidden="true"></i><span>Promocionais</span><i aria-hidden="true"></i><span>Soluções Gráficas</span>
+			</p>
+		</div>
+
+		<nav class="footer-navigation footer-column" aria-label="Navegação do rodapé">
+			<h2 class="footer-heading">Navegação</h2>
+			<ul>
+				{footerNavItems.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
+			</ul>
+		</nav>
+
+		<div class="footer-contacts footer-column">
+			<h2 class="footer-heading">Contatos</h2>
+			<ul>
+				<li>
+					<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.2 3.5 4.8 4.6c-1.2.6-1.7 2-1.2 3.2 2.2 5.4 6.7 9.9 12.1 12.1 1.2.5 2.6 0 3.2-1.2l1.2-2.4-4.4-2.2-1.2 1.7c-2.8-1.3-5.1-3.6-6.4-6.4l1.5-1.2-2.4-4.7Z"></path></svg>
+					<a href={siteMeta.whatsappHref}>{siteMeta.phone}</a>
+				</li>
+				<li>
+					<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m4 7 8 6 8-6"></path></svg>
+					<a href={`mailto:${siteMeta.email}`}>{siteMeta.email}</a>
+				</li>
+				<li>
+					<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"></path><circle cx="12" cy="10" r="2.5"></circle></svg>
+					<a
+						href="https://www.google.com/maps/search/?api=1&query=Rua+Silveira+Martins%2C+257%2C+Santa+Terezinha%2C+Santo+Andr%C3%A9%2C+SP%2C+09210-520"
+						target="_blank"
+						rel="noopener noreferrer"
+						aria-label="Abrir o endereço da Criasett no Google Maps"
+					>
+						<address>{siteMeta.address}</address>
+					</a>
+				</li>
+			</ul>
+		</div>
 	</div>
-	<nav aria-label="Links de rodapé">
-		<a href="/institucional">Institucional</a>
-		<a href="/estrutura">Estrutura</a>
-		<a href="/portfolio">Portfólio</a>
-		<a href="/politicas">Políticas</a>
-		<a href="/contato">Contato</a>
-	</nav>
-	<div class="footer-solutions" aria-label="Soluções">
-		{solutionGroups.map((solution) => <a href={solution.href}>{solution.title}</a>)}
+
+	<div class="site-footer__bottom">
+		<p>© {year} Criasett. Todos os direitos reservados.</p>
 	</div>
-	<p class="footer-meta">© {year} {siteMeta.name}. Site em desenvolvimento.</p>
 </footer>

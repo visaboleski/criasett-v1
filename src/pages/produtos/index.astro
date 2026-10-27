@@ -1,0 +1,97 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+	title="Produtos"
+	description="Soluções Criasett em embalagens, materiais promocionais e comunicação para ponto de venda."
+>
+	<section class="products-overview-hero" aria-labelledby="products-overview-title">
+		<img
+			class="products-overview-hero__image"
+			src="/images/Minimal CMYK Packaging Wave Scene.png"
+			alt="Embalagens e materiais promocionais desenvolvidos pela Criasett"
+			width="1672"
+			height="941"
+			fetchpriority="high"
+			decoding="async"
+		/>
+
+		<div class="home-container products-overview-hero__inner">
+			<div class="products-overview-hero__copy">
+				<h1 id="products-overview-title">
+					<span>Da embalagem</span>
+					<span>ao ponto de</span>
+					<span>venda.</span>
+				</h1>
+				<p class="products-overview-hero__description">
+					Da pré-impressão ao acabamento, reunimos <strong>tecnologia, experiência e processos produtivos integrados</strong> para atender às diferentes necessidades gráficas da indústria e do varejo.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="products-overview-categories" aria-label="Categorias de produtos">
+		<article class="products-overview-category">
+			<div class="home-container products-overview-category__inner">
+				<figure class="products-overview-category__media">
+					<img
+						src="/images/EMBALAGENS.png"
+						alt="Linha de embalagens em papel e papel-cartão da Criasett"
+						width="1600"
+						height="1200"
+						loading="lazy"
+						decoding="async"
+					/>
+				</figure>
+
+				<div class="products-overview-category__copy">
+					<p class="products-overview-category__eyebrow"><span>01</span> — Embalagens</p>
+					<h2>Soluções para diferentes segmentos.</h2>
+					<p>Produzimos <strong>cartuchos, embalagens expositoras, displays e sacolas</strong> em papel e papel-cartão para diversos segmentos, como <strong>alimentos, bebidas, cosméticos e bem-estar</strong>.</p>
+					<p>Oferecemos diferentes formatos, materiais e acabamentos, considerando as características de cada produto e suas necessidades de acondicionamento e apresentação.</p>
+					<a class="products-overview-button" href="/produtos/embalagens">
+						Conheça Embalagens <span aria-hidden="true">→</span>
+					</a>
+				</div>
+			</div>
+		</article>
+
+		<article class="products-overview-category products-overview-category--reverse">
+			<div class="home-container products-overview-category__inner">
+				<figure class="products-overview-category__media">
+					<img
+						src="/images/PROMOCIONAIS.png"
+						alt="Materiais promocionais e soluções para ponto de venda da Criasett"
+						width="1600"
+						height="900"
+						loading="lazy"
+						decoding="async"
+					/>
+				</figure>
+
+				<div class="products-overview-category__copy">
+					<p class="products-overview-category__eyebrow"><span>02</span> — Promocionais</p>
+					<h2>Materiais promocionais e de PDV.</h2>
+					<p>Produzimos <strong>cubos, totens, wobblers, stoppers, gargaleiras e catálogos</strong> para campanhas, eventos, ações promocionais e exposição no ponto de venda.</p>
+					<p>Materiais que contribuem para destacar produtos, comunicar informações e ampliar a visibilidade das marcas em diferentes ambientes comerciais.</p>
+					<a class="products-overview-button" href="/produtos/promocionais">
+						Conheça Promocionais <span aria-hidden="true">→</span>
+					</a>
+				</div>
+			</div>
+		</article>
+	</section>
+
+	<section class="products-overview-cta" aria-labelledby="products-overview-cta-title">
+		<div class="home-container products-overview-cta__inner">
+			<div>
+				<h2 id="products-overview-cta-title">Vamos encontrar a melhor solução para a sua empresa.</h2>
+				<p>Fale com a equipe da Criasett e conheça as possibilidades em embalagens e materiais promocionais.</p>
+			</div>
+			<a class="products-overview-button products-overview-button--solid" href="/contato">
+				Entrar em contato <span aria-hidden="true">→</span>
+			</a>
+		</div>
+	</section>
+</BaseLayout>

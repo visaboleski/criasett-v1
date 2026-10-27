@@ -1,0 +1,128 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import {
+	certificateDocuments,
+	type CertificateDocumentId,
+} from '@data/certificate-documents';
+import { isValidPublicDocumentUrl } from '@lib/documents/public';
+
+type Certification = {
+	name: string;
+	logo: string;
+	logoAlt: string;
+	className: string;
+	text: string;
+	documentId?: CertificateDocumentId;
+};
+
+const certifications: Certification[] = [
+	{
+		name: 'ISO 9001:2008',
+		logo: '/images/Certificado ISO 9001_PT_2.png',
+		logoAlt: 'Certificação ISO 9001 — Bureau Veritas',
+		className: 'certification-card--iso',
+		text: 'Certificada pela Bureau Veritas desde 2008, a Criasett opera com processos alinhados às melhores práticas de gestão da qualidade. Essa certificação contribui para a controle efetivo das etapas de produção, prazos e padrões de qualidade em todos os setores da empresa.',
+		documentId: 'iso-9001',
+	},
+	{
+		name: 'FSC®',
+		logo: '/images/FSC_C084646_Promotional_with_text_Landscape_WhiteOnGreen_r_xC1Fc5.png',
+		logoAlt: 'FSC — a marca do manejo florestal responsável',
+		className: 'certification-card--fsc',
+		text: 'A certificação FSC® assegura que o papel utilizado em nossos produtos é proveniente de florestas manejadas de forma responsável e que fortalece o nosso compromisso com práticas ambientais adequadas, socialmente justas e economicamente viáveis, em conformidade com a legislação vigente.',
+		documentId: 'fsc',
+	},
+	{
+		name: 'SMETA',
+		logo: '/images/smeta-certification-logo-png_seeklogo-615209.png',
+		logoAlt: 'SMETA',
+		className: 'certification-card--smeta',
+		text: 'A Criasett é auditada periodicamente pela SMETA desde 2012, um dos formatos de auditoria ética mais utilizados no mundo. A avaliação considera quatro pilares de desempenho: Saúde e Segurança, Normas Laborais, Meio Ambiente e Ética nos Negócios.',
+	},
+	{
+		name: 'eureciclo',
+		logo: '/images/eu reciclo.png',
+		logoAlt: 'eureciclo',
+		className: 'certification-card--eureciclo',
+		text: 'Em parceria com a eureciclo, a Criasett fortalece a logística reversa e a compensação ambiental de embalagens pós-consumo. Hoje, compensamos 100% das embalagens geradas, contribuindo para o desenvolvimento da cadeia de reciclagem e para o aumento das taxas de reciclagem no Brasil.',
+	}
+];
+---
+
+<BaseLayout
+	title="Certificações"
+	description="Certificações e práticas auditadas que reforçam o compromisso da Criasett com qualidade, responsabilidade e melhoria contínua."
+>
+	<section class="certifications-hero" aria-labelledby="certifications-title">
+		<img class="certifications-hero__image" src="/images/HERO CERTIFICACOES.png" alt="" fetchpriority="high" />
+		<div class="home-container certifications-hero__inner">
+			<div class="certifications-hero__copy">
+				<h1 id="certifications-title" class="certifications-hero__statement">
+					<span class="certifications-hero__title-line certifications-hero__title-line--accent">Compromisso</span>
+					<span class="certifications-hero__title-line">Com qualidade,</span>
+					<span class="certifications-hero__title-line">Responsabilidade e</span>
+					<span class="certifications-hero__title-line">Melhoria contínua.</span>
+				</h1>
+				<p class="certifications-hero__intro">
+					Na Criasett, mantemos certificações e práticas auditadas que reforçam nosso compromisso com a <strong>qualidade, o manejo responsável de recursos, a ideia nos negócios e a logística reversa</strong>, contribuindo para um futuro mais sustentável e para a confiança de nossos clientes.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="certifications-content" aria-label="Certificações e práticas auditadas">
+		<div class="home-container certifications-grid">
+			{
+				certifications.map((certification) => {
+					const document = certification.documentId
+						? certificateDocuments[certification.documentId]
+						: null;
+					const pdfUrl =
+						document?.pdfUrl && isValidPublicDocumentUrl(document.pdfUrl)
+							? document.pdfUrl
+							: null;
+
+					return (
+						<article class={`certification-card ${certification.className}`}>
+							<div class="certification-card__logo">
+								<img src={certification.logo} alt={certification.logoAlt} loading="lazy" />
+							</div>
+							<h2>{certification.name}</h2>
+							<span class="certifications-rule certifications-rule--small" aria-hidden="true"></span>
+							<p>{certification.text}</p>
+							{
+								document && (
+									<footer class="certification-card__footer">
+										{
+											pdfUrl ? (
+												<a
+													class="certification-card__document-link"
+													href={pdfUrl}
+													target="_blank"
+													rel="noopener noreferrer"
+													aria-label={`Ver certificado: ${certification.name} (abre em nova aba)`}
+												>
+													Ver certificado <span aria-hidden="true">↗</span>
+												</a>
+											) : (
+											<button
+												type="button"
+												class="certification-card__document-link"
+												disabled
+												aria-disabled="true"
+												aria-label={`Ver certificado: ${certification.name} (documento ainda indisponível)`}
+											>
+												Ver certificado <span aria-hidden="true">↗</span>
+											</button>
+											)
+										}
+									</footer>
+								)
+							}
+						</article>
+					);
+				})
+			}
+		</div>
+	</section>
+</BaseLayout>

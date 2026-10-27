@@ -1,0 +1,93 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+
+const promotionalItems = [
+	{
+		name: 'Cubos',
+		image: '/images/CUBO-PET.png',
+		description: 'Comunicação versátil para campanhas, ativações e pontos de venda.',
+	},
+	{
+		name: 'Totem',
+		image: '/images/TOTEM-COSMETICOS.png',
+		description: 'Destaque visual para produtos e marcas em ambientes comerciais.',
+	},
+	{
+		name: 'Wobbler',
+		image: '/images/WOBBLER-ALIMENTOS.png',
+		description: 'Comunicação de destaque para gôndolas e exposição de produtos.',
+	},
+	{
+		name: 'Stopper',
+		image: '/images/STOPPER-VITAMINAS.png',
+		description: 'Visibilidade e comunicação para diferentes pontos de exposição.',
+	},
+	{
+		name: 'Gargaleira',
+		image: '/images/GARGALEIRA-BEBIDAS.png',
+		description: 'Valorização de embalagens e comunicação promocional para bebidas.',
+	},
+	{
+		name: 'Catálogos',
+		image: '/images/Luxury Cruise Catalog Mockup.png',
+		description: 'Materiais editoriais de alta qualidade com impressão e acabamentos diferenciados.',
+	},
+];
+---
+
+<BaseLayout
+	title="Promocionais"
+	description="Materiais promocionais e soluções para ponto de venda desenvolvidos pela Criasett."
+>
+	<section class="packaging-hero promotional-hero" aria-labelledby="promotional-hero-title">
+		<img
+			class="packaging-hero__image promotional-hero__image"
+			src="/images/PROMOCIONAIS hero.png"
+			alt="Materiais promocionais e soluções para ponto de venda produzidos pela Criasett"
+			width="1600"
+			height="900"
+			fetchpriority="high"
+			decoding="async"
+		/>
+
+		<div class="home-container packaging-hero__inner">
+			<div class="packaging-hero__copy">
+				<h1 id="promotional-hero-title">
+					<span>Materiais</span>
+					<span>Promocionais</span>
+					<span>E de PDV.</span>
+				</h1>
+
+				<div class="packaging-hero__body">
+					<p>Produzimos <strong>materiais promocionais</strong> e <strong>soluções para ponto de venda</strong> que destacam produtos, valorizam marcas e fortalecem sua presença junto ao consumidor.</p>
+					<p>Com <strong>criatividade, qualidade de impressão e acabamentos especiais</strong>, produzimos materiais para campanhas, eventos e diferentes ações de marketing.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="promotional-gallery" aria-label="Materiais promocionais">
+		<div class="home-container">
+			<div class="promotional-grid">
+				{promotionalItems.map((item) => (
+					<article class="promotional-card">
+						<figure class="promotional-card__visual">
+							<img
+								src={item.image}
+								alt={item.name}
+								width="1200"
+								height="1200"
+								loading="lazy"
+								decoding="async"
+							/>
+						</figure>
+						<div class="promotional-card__copy">
+							<h3>{item.name}</h3>
+							<p>{item.description}</p>
+						</div>
+					</article>
+				))}
+			</div>
+		</div>
+	</section>
+</BaseLayout>
