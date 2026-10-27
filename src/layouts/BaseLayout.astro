@@ -7,15 +7,18 @@ interface Props {
 	title?: string;
 	description?: string;
 	pageClass?: string;
+	robots?: string;
 }
 
 const {
 	title = 'Criasett',
 	description = 'Indústria gráfica em Santo André, SP, especializada em embalagens, PDV e materiais promocionais.',
 	pageClass,
+	robots,
 } = Astro.props;
 
 const fullTitle = title === 'Criasett' ? title : `${title} | Criasett`;
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!doctype html>
@@ -25,6 +28,8 @@ const fullTitle = title === 'Criasett' ? title : `${title} | Criasett`;
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="description" content={description} />
 		<meta name="theme-color" content="#ffffff" />
+		{robots && <meta name="robots" content={robots} />}
+		<link rel="canonical" href={canonicalUrl} />
 		<title>{fullTitle}</title>
 	</head>
 	<body class={pageClass}>

@@ -1,0 +1,18 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+	title="Página não encontrada"
+	description="A página solicitada não foi encontrada no site da Criasett."
+	robots="noindex, nofollow"
+>
+	<section class="not-found-page" aria-labelledby="not-found-title">
+		<div class="home-container not-found-page__inner">
+			<p class="home-eyebrow">Erro 404</p>
+			<h1 id="not-found-title">Página não encontrada.</h1>
+			<p>O endereço acessado não existe ou foi alterado.</p>
+			<a class="button button--primary" href="/">Voltar para a página inicial</a>
+		</div>
+	</section>
+</BaseLayout>

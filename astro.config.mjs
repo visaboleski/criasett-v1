@@ -37,7 +37,7 @@ function loadLocalEnv() {
 }
 
 const env = loadLocalEnv();
-const site = env.PUBLIC_SITE_URL || 'https://www.graficacriasett.com.br';
+const site = env.PUBLIC_SITE_URL || 'https://graficacriasett.com.br';
 const imageKitEndpoint = env.IMAGEKIT_URL_ENDPOINT;
 
 const integrations = [

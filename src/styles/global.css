@@ -3651,6 +3651,33 @@ body {
 	background: rgb(0 169 214 / 48%);
 }
 
+.not-found-page {
+	display: grid;
+	min-height: 62vh;
+	place-items: center;
+	padding: clamp(80px, 12vw, 150px) 0;
+	background: #fbfcfc;
+}
+
+.not-found-page__inner {
+	text-align: center;
+}
+
+.not-found-page h1 {
+	margin: 12px 0 18px;
+	color: var(--ink);
+	font-size: clamp(2.5rem, 7vw, 5.5rem);
+	line-height: 0.98;
+	letter-spacing: -0.055em;
+}
+
+.not-found-page__inner > p:not(.home-eyebrow) {
+	margin: 0 0 30px;
+	color: #263a51;
+	font-size: 1rem;
+	line-height: 1.7;
+}
+
 @media (hover: hover) {
 	.policy-card:hover {
 		border-color: rgb(0 169 214 / 23%);
