@@ -240,60 +240,6 @@ export const portfolioItems: PortfolioItem[] = [
 	},
 ];
 
-export type BlogPost = {
-	slug: string;
-	title: string;
-	publishedAt: string;
-	excerpt: string;
-	tags: string[];
-	body: Array<{ heading: string; text: string }>;
-};
-
-export const blogPosts: BlogPost[] = [
-	{
-		slug: 'preparo-de-arquivos',
-		title: 'Como preparar arquivos para impressão com mais segurança',
-		publishedAt: '2026-07-16',
-		excerpt: 'Um guia inicial para reduzir retrabalho em cor, sangria, fechamento e aprovação.',
-		tags: ['Pré-impressão', 'Arquivos', 'Qualidade'],
-		body: [
-			{
-				heading: 'Comece pelo formato final',
-				text: 'Antes de fechar um arquivo, confirme faca, sangria, margem de segurança e orientação de leitura. Pequenas decisões nesta etapa evitam retrabalho mais adiante.',
-			},
-			{
-				heading: 'Padronize cor e imagens',
-				text: 'Arquivos para produção gráfica precisam de imagens em boa resolução, cores preparadas para impressão e textos revisados antes do envio.',
-			},
-			{
-				heading: 'Aprovação é parte do processo',
-				text: 'A prova técnica ajuda cliente e produção a falarem a mesma língua antes da tiragem final.',
-			},
-		],
-	},
-	{
-		slug: 'acabamentos-graficos',
-		title: 'Acabamentos gráficos que valorizam embalagens',
-		publishedAt: '2026-07-16',
-		excerpt: 'Quando laminação, verniz, corte especial e dobra ajudam a transformar percepção de valor.',
-		tags: ['Acabamento', 'Embalagem', 'PDV'],
-		body: [
-			{
-				heading: 'Acabamento também comunica',
-				text: 'Uma embalagem bem acabada passa percepção de cuidado antes mesmo da leitura do texto. O acabamento deve apoiar o produto, não disputar atenção com ele.',
-			},
-			{
-				heading: 'Escolha pelo uso real',
-				text: 'Materiais que serão manuseados, transportados ou expostos no varejo pedem escolhas técnicas diferentes de peças promocionais de curta duração.',
-			},
-			{
-				heading: 'Consistência vale muito',
-				text: 'Em projetos B2B, repetir cor, dobra, corte e montagem com estabilidade é tão importante quanto criar um efeito visual bonito.',
-			},
-		],
-	},
-];
-
 export const policies = [
 	{
 		title: 'Política de Qualidade',

@@ -373,8 +373,6 @@ h3 {
 .process-grid article,
 .solution-card,
 .portfolio-card,
-.blog-teasers article,
-.blog-list article,
 .policy-list article,
 .department-list article,
 .contact-panel {
@@ -454,8 +452,6 @@ h3 {
 .proof-list p,
 .process-grid p,
 .portfolio-card p,
-.blog-teasers span,
-.blog-list span,
 .policy-list span:not(.muted-note),
 .department-list p,
 .contact-panel p {
@@ -717,30 +713,15 @@ h3 {
 	margin-bottom: 0;
 }
 
-.blog-teasers,
-.blog-list,
 .policy-list,
 .department-list {
 	display: grid;
 	gap: 16px;
 }
 
-.blog-teasers {
-	grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.blog-teasers article,
-.blog-list article,
 .policy-list article,
 .department-list article {
 	padding: 24px;
-}
-
-.blog-teasers p,
-.blog-list p {
-	margin-bottom: 12px;
-	color: var(--green);
-	font-weight: 800;
 }
 
 .page-hero {
@@ -1123,7 +1104,6 @@ h3 {
 	.process-layout,
 	.portfolio-grid,
 	.editorial-strip,
-	.blog-teasers,
 	.timeline,
 	.detail-hero,
 	.detail-layout,

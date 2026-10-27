@@ -59,5 +59,11 @@ explicit step.
 
 ## Notes
 
-The institutional video placeholder remains intentionally unchanged until the
-final externally hosted video is approved.
+The stakeholder review environment is:
+
+`https://criasett-site.criasett-site.workers.dev/`
+
+Production-domain work is intentionally paused until explicit stakeholder
+approval. The authoritative Step 6A DNS audit, preservation requirements, and
+cutover prerequisites are recorded in
+[`docs/production-domain-freeze.md`](docs/production-domain-freeze.md).

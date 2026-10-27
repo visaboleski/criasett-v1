@@ -5,6 +5,7 @@
 	"scripts": {
 		"dev": "ASTRO_TELEMETRY_DISABLED=1 astro dev",
 		"build": "ASTRO_TELEMETRY_DISABLED=1 astro check && ASTRO_TELEMETRY_DISABLED=1 astro build",
+		"build:staging": "PUBLIC_DEPLOYMENT_ENVIRONMENT=staging pnpm build",
 		"postbuild": "node scripts/remove-os-metadata.mjs",
 		"preview": "ASTRO_TELEMETRY_DISABLED=1 astro preview",
 		"sync": "ASTRO_TELEMETRY_DISABLED=1 astro sync",
