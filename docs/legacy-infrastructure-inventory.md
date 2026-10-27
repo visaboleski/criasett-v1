@@ -1,6 +1,10 @@
 # LEGACY INFRASTRUCTURE INVENTORY
 
-This inventory records the transitional infrastructure found during the Homepage/foundation redesign. Nothing listed here was migrated or removed in this scope.
+> Historical snapshot from preservation commit `4549c517010b5838b274f3a0dbd4780780707310`.
+> The static-migration branch removes this infrastructure from the active repository runtime;
+> the external Vercel and Supabase projects are not modified by that cleanup.
+
+This inventory records the transitional infrastructure found during the Homepage/foundation redesign before static conversion.
 
 ## Supabase
 

@@ -8,3 +8,6 @@ supabase/.temp/
 .env.local
 .DS_Store
 *.log
+
+# Generated visual QA screenshots. Production assets belong in public/.
+/artifacts/*.jpg
