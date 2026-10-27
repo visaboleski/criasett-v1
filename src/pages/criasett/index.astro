@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
+import { institutionalVideo } from '@data/public-media';
 ---
 
 <BaseLayout
@@ -21,13 +22,18 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 				<p class="about-page-hero__prompt"><span aria-hidden="true">▶</span> Dê o play e conheça a Criasett.</p>
 			</div>
 
-			<figure class="about-page-hero__media" aria-label="Espaço reservado para o vídeo institucional da Criasett">
-				<img src="/images/BACKGROUND4.png" alt="Composição abstrata de papéis brancos com detalhes em cores CMYK" />
-				<div class="about-page-hero__media-shade" aria-hidden="true"></div>
-				<div class="about-page-hero__play" aria-hidden="true">
-					<svg viewBox="0 0 48 48"><path d="m19 14 16 10-16 10V14Z"></path></svg>
-				</div>
-				<figcaption>Vídeo institucional <span>Arquivo final pendente</span></figcaption>
+			<figure class="about-page-hero__media">
+				<video
+					controls
+					playsinline
+					preload="metadata"
+					poster={institutionalVideo.poster}
+					aria-label="Vídeo institucional da Criasett"
+				>
+					<source src={institutionalVideo.src} type="video/mp4" />
+					Seu navegador não oferece suporte a vídeo HTML.{' '}
+					<a href={institutionalVideo.src}>Acesse o vídeo institucional.</a>
+				</video>
 			</figure>
 		</div>
 	</section>
