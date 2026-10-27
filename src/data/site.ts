@@ -6,8 +6,8 @@ export const siteMeta = {
 	phone: '(11) 4996-5055',
 	email: 'atendimento@graficacriasett.com.br',
 	address: 'Rua Silveira Martins, 257 – Santa Terezinha, Santo André – SP, CEP 09210-520',
-	whatsappLabel: 'Telefone',
-	whatsappHref: 'tel:+551149965055',
+	phoneLabel: 'Telefone',
+	phoneHref: 'tel:+551149965055',
 };
 
 export const homeContent = {

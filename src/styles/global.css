@@ -4516,7 +4516,7 @@ a.contact-social-card:hover {
 	padding: 24px 25px 27px;
 }
 
-.promotional-card h3 {
+.promotional-card h2 {
 	margin: 0 0 9px;
 	color: var(--ink);
 	font-size: clamp(1.25rem, 1.7vw, 1.52rem);
@@ -4567,7 +4567,7 @@ a.contact-social-card:hover {
 	.promotional-gallery__header h2 { margin-bottom: 13px; font-size: clamp(2.2rem, 11vw, 2.85rem); }
 	.promotional-gallery__header p { font-size: 0.96rem; line-height: 1.6; }
 	.promotional-card__copy { padding: 21px 21px 24px; }
-	.promotional-card h3 { font-size: 1.3rem; }
+	.promotional-card h2 { font-size: 1.3rem; }
 }
 
 /* Produtos overview */
