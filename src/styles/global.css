@@ -2219,12 +2219,151 @@ body {
 	box-shadow: 0 28px 70px rgba(24, 40, 58, 0.12);
 }
 
-.about-page-hero__media > video {
+.about-page-hero__video-card {
+	position: relative;
+	display: block;
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	overflow: hidden;
+	border: 0;
+	border-radius: inherit;
+	background: #0e1722;
+	color: #fff;
+	cursor: pointer;
+}
+
+.about-page-hero__video-card::after {
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(180deg, rgba(8, 17, 27, 0.04) 42%, rgba(8, 17, 27, 0.72) 100%);
+	content: "";
+}
+
+.about-page-hero__video-card > img {
 	display: block;
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
 	object-position: center;
+	transition: transform 320ms ease;
+}
+
+.about-page-hero__video-card-content {
+	position: absolute;
+	z-index: 1;
+	inset: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 18px;
+	padding: 28px;
+}
+
+.about-page-hero__video-card-play {
+	display: grid;
+	width: 64px;
+	height: 64px;
+	place-items: center;
+	border: 1px solid rgba(255, 255, 255, 0.78);
+	border-radius: 50%;
+	background: rgba(12, 24, 37, 0.48);
+	box-shadow: 0 12px 34px rgba(0, 0, 0, 0.2);
+	backdrop-filter: blur(7px);
+	transition: transform 180ms ease, background-color 180ms ease;
+}
+
+.about-page-hero__video-card-play svg {
+	width: 28px;
+	height: 28px;
+	margin-left: 3px;
+	fill: currentColor;
+}
+
+.about-page-hero__video-card-label {
+	position: absolute;
+	right: 24px;
+	bottom: 24px;
+	left: 24px;
+	font-size: 0.78rem;
+	font-weight: 800;
+	letter-spacing: 0.11em;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+.about-page-hero__video-card:hover > img { transform: scale(1.025); }
+.about-page-hero__video-card:hover .about-page-hero__video-card-play { transform: scale(1.06); background: rgba(12, 24, 37, 0.64); }
+
+.about-page-hero__video-card:focus-visible {
+	outline: 3px solid var(--cyan);
+	outline-offset: 5px;
+}
+
+.institutional-video-modal {
+	width: 100vw;
+	height: 100dvh;
+	max-width: none;
+	max-height: none;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	background: transparent;
+}
+
+.institutional-video-modal[open] {
+	display: grid;
+	place-items: center;
+}
+
+.institutional-video-modal::backdrop {
+	background: rgba(5, 12, 20, 0.86);
+	backdrop-filter: blur(7px);
+}
+
+.institutional-video-modal__panel {
+	position: relative;
+	width: min(420px, calc(100vw - 32px));
+	aspect-ratio: 9 / 16;
+	overflow: hidden;
+	border-radius: 14px;
+	background: #05090e;
+	box-shadow: 0 28px 90px rgba(0, 0, 0, 0.52);
+}
+
+.institutional-video-modal__panel > video {
+	display: block;
+	width: 100%;
+	height: 100%;
+	background: #05090e;
+	object-fit: contain;
+}
+
+.institutional-video-modal__close {
+	position: absolute;
+	z-index: 2;
+	top: 12px;
+	right: 12px;
+	display: grid;
+	width: 44px;
+	height: 44px;
+	padding: 0;
+	place-items: center;
+	border: 1px solid rgba(255, 255, 255, 0.65);
+	border-radius: 50%;
+	background: rgba(5, 12, 20, 0.68);
+	color: #fff;
+	font: inherit;
+	font-size: 1.85rem;
+	line-height: 1;
+	cursor: pointer;
+	backdrop-filter: blur(7px);
+}
+
+.institutional-video-modal__close:focus-visible {
+	outline: 3px solid var(--cyan);
+	outline-offset: 3px;
 }
 
 .about-page-story { padding: clamp(64px, 7vw, 94px) 0; background: #fbfcfc; }
@@ -2297,7 +2436,9 @@ body {
 	.about-page-hero__inner { gap: 40px; }
 	.about-page-hero__copy h1 { max-width: none; margin-bottom: 24px; font-size: clamp(2.5rem, 11vw, 3.2rem); }
 	.about-page-hero__intro { font-size: 0.96rem; line-height: 1.68; }
-	.about-page-hero__media { max-width: none; justify-self: stretch; border-radius: 9px; }
+	.about-page-hero__media { max-width: none; aspect-ratio: 4 / 5; justify-self: stretch; border-radius: 9px; }
+	.about-page-hero__video-card-label { right: 18px; bottom: 18px; left: 18px; }
+	.institutional-video-modal__panel { width: min(390px, calc(100vw - 24px)); border-radius: 10px; }
 	.about-page-story { padding: 56px 0 64px; }
 	.about-page-story__inner { grid-template-columns: 1fr; gap: 36px; }
 	.about-page-story__fact { position: static; }

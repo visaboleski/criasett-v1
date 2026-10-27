@@ -23,19 +23,47 @@ import { institutionalVideo } from '@data/public-media';
 			</div>
 
 			<figure class="about-page-hero__media">
+				<button
+					type="button"
+					class="about-page-hero__video-card"
+					aria-label="Assistir ao vídeo institucional da Criasett"
+					data-video-open
+				>
+					<img
+						src="/images/criasett-institutional-video-cover.jpg"
+						alt=""
+						width="1080"
+						height="1920"
+					/>
+					<span class="about-page-hero__video-card-content" aria-hidden="true">
+						<span class="about-page-hero__video-card-play">
+							<svg viewBox="0 0 24 24"><path d="m9 7 8 5-8 5V7Z"></path></svg>
+						</span>
+						<span class="about-page-hero__video-card-label">Vídeo institucional</span>
+					</span>
+				</button>
+			</figure>
+		</div>
+
+		<dialog class="institutional-video-modal" aria-label="Vídeo institucional da Criasett" data-video-dialog>
+			<div class="institutional-video-modal__panel" data-video-panel>
+				<button type="button" class="institutional-video-modal__close" aria-label="Fechar vídeo" data-video-close>
+					<span aria-hidden="true">×</span>
+				</button>
 				<video
 					controls
 					muted
 					playsinline
 					preload="metadata"
 					aria-label="Vídeo institucional da Criasett"
+					data-video-player
 				>
 					<source src={institutionalVideo.src} type="video/mp4" />
 					Seu navegador não oferece suporte a vídeo HTML.{' '}
 					<a href={institutionalVideo.src}>Acesse o vídeo institucional.</a>
 				</video>
-			</figure>
-		</div>
+			</div>
+		</dialog>
 	</section>
 
 	<section class="about-page-story" aria-label="Nossa trajetória">
@@ -209,4 +237,48 @@ import { institutionalVideo } from '@data/public-media';
 			</div>
 		</div>
 	</section>
+
+	<script>
+		const videoTrigger = document.querySelector<HTMLButtonElement>('[data-video-open]');
+		const videoDialog = document.querySelector<HTMLDialogElement>('[data-video-dialog]');
+		const videoPanel = document.querySelector<HTMLElement>('[data-video-panel]');
+		const videoClose = document.querySelector<HTMLButtonElement>('[data-video-close]');
+		const videoPlayer = document.querySelector<HTMLVideoElement>('[data-video-player]');
+
+		if (videoTrigger && videoDialog && videoPanel && videoClose && videoPlayer) {
+			let playbackRequest = 0;
+
+			const resetVideo = () => {
+				videoPlayer.pause();
+				videoPlayer.muted = true;
+				if (videoPlayer.readyState > 0) videoPlayer.currentTime = 0;
+			};
+
+			const closeVideo = () => {
+				if (videoDialog.open) videoDialog.close();
+			};
+
+			videoTrigger.addEventListener('click', () => {
+				const request = ++playbackRequest;
+				videoDialog.showModal();
+				videoPlayer.muted = true;
+				videoClose.focus();
+				void videoPlayer.play().then(() => {
+					if (request !== playbackRequest || !videoDialog.open) resetVideo();
+				}).catch(() => undefined);
+			});
+
+			videoClose.addEventListener('click', closeVideo);
+
+			videoDialog.addEventListener('click', (event) => {
+				if (event.target === videoDialog) closeVideo();
+			});
+
+			videoDialog.addEventListener('close', () => {
+				playbackRequest += 1;
+				resetVideo();
+				videoTrigger.focus();
+			});
+		}
+	</script>
 </BaseLayout>
