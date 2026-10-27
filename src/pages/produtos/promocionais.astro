@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
+import ResponsiveImage from '@components/ResponsiveImage.astro';
 
 const promotionalItems = [
 	{
@@ -40,14 +41,16 @@ const promotionalItems = [
 	description="Materiais promocionais e soluções para ponto de venda desenvolvidos pela Criasett."
 >
 	<section class="packaging-hero promotional-hero" aria-labelledby="promotional-hero-title">
-		<img
+		<ResponsiveImage
 			class="packaging-hero__image promotional-hero__image"
 			src="/images/PROMOCIONAIS hero.png"
 			alt="Materiais promocionais e soluções para ponto de venda produzidos pela Criasett"
-			width="1600"
-			height="900"
+			width={1672}
+			height={941}
+			widths={[480, 768, 1024, 1440, 1672]}
+			sizes="100vw"
+			loading="eager"
 			fetchpriority="high"
-			decoding="async"
 		/>
 
 		<div class="home-container packaging-hero__inner">
@@ -72,13 +75,14 @@ const promotionalItems = [
 				{promotionalItems.map((item) => (
 					<article class="promotional-card">
 						<figure class="promotional-card__visual">
-							<img
+							<ResponsiveImage
 								src={item.image}
 								alt={item.name}
-								width="1200"
-								height="1200"
+								width={1254}
+								height={1254}
+								widths={[480, 768, 1024, 1254]}
+								sizes="(max-width: 760px) calc(100vw - 57px), 29vw"
 								loading="lazy"
-								decoding="async"
 							/>
 						</figure>
 						<div class="promotional-card__copy">

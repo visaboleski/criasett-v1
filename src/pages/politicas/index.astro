@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
+import ResponsiveImage from '@components/ResponsiveImage.astro';
 import { policyLibraryItems } from '@data/policy-library';
 import { isValidPublicDocumentUrl } from '@lib/documents/public';
 ---
@@ -9,15 +10,17 @@ import { isValidPublicDocumentUrl } from '@lib/documents/public';
 	description="Diretrizes que orientam o trabalho da Criasett e fortalecem suas relações com colaboradores, clientes, fornecedores e parceiros."
 >
 	<section class="policies-page-hero" aria-labelledby="policies-page-title">
-		<img
+		<ResponsiveImage
 			class="policies-page-hero__image"
 			src="/images/HERO POLITICAS.png"
 			alt=""
-			aria-hidden="true"
-			width="1672"
-			height="941"
+			ariaHidden="true"
+			width={1672}
+			height={941}
+			widths={[480, 768, 1024, 1440, 1672]}
+			sizes="100vw"
+			loading="eager"
 			fetchpriority="high"
-			decoding="async"
 		/>
 		<div class="home-container policies-page-hero__inner">
 			<div class="policies-page-hero__copy">

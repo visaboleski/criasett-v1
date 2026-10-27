@@ -1,0 +1,69 @@
+---
+interface Props {
+	src: string;
+	alt: string;
+	width: number;
+	height: number;
+	widths: number[];
+	sizes: string;
+	class?: string;
+	loading?: 'eager' | 'lazy';
+	fetchpriority?: 'high' | 'low' | 'auto';
+	decoding?: 'async' | 'sync' | 'auto';
+	ariaHidden?: 'true' | 'false';
+}
+
+const {
+	src,
+	alt,
+	width,
+	height,
+	widths,
+	sizes,
+	class: className,
+	loading = 'lazy',
+	fetchpriority = 'auto',
+	decoding = 'async',
+	ariaHidden,
+} = Astro.props;
+
+const filename = src.split('/').at(-1) ?? src;
+const stem = filename.replace(/\.[^.]+$/, '');
+const slug = stem
+	.normalize('NFD')
+	.replace(/[\u0300-\u036f]/g, '')
+	.toLowerCase()
+	.replace(/[^a-z0-9]+/g, '-')
+	.replace(/^-|-$/g, '');
+const optimizedPath = `/images/optimized/${slug}`;
+const hasAlpha = [
+	'Criasett_logo_Horizontal.png',
+	'Criasett_logo_Branco.png',
+	'estrutura-impressao.png',
+	'cartucho-transparente.png',
+	'embalagem-expositora-transparente.png',
+	'display-transparente.png',
+	'sacola-transparente.png',
+	'sacola-boca-palhaco-transparente.png',
+	'embalagem-holografica-transparente.png',
+].includes(filename);
+const srcset = (format: 'avif' | 'webp') =>
+	widths.map((candidate) => `${optimizedPath}-${candidate}.${format} ${candidate}w`).join(', ');
+---
+
+<picture class="responsive-picture">
+	{!hasAlpha && <source type="image/avif" srcset={srcset('avif')} sizes={sizes} />}
+	<source type="image/webp" srcset={srcset('webp')} sizes={sizes} />
+	<img
+		class={className}
+		src={src}
+		alt={alt}
+		width={width}
+		height={height}
+		sizes={sizes}
+		loading={loading}
+		fetchpriority={fetchpriority}
+		decoding={decoding}
+		aria-hidden={ariaHidden}
+	/>
+</picture>

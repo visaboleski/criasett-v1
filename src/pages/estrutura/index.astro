@@ -1,5 +1,6 @@
 ---
 import StructureVisual from '@components/StructureVisual.astro';
+import ResponsiveImage from '@components/ResponsiveImage.astro';
 import BaseLayout from '@layouts/BaseLayout.astro';
 
 const chapters = [
@@ -66,7 +67,7 @@ const chapters = [
 
 <BaseLayout title="Estrutura" description="Tecnologia, experiência e cuidado em cada etapa da estrutura produtiva da Criasett.">
 	<section class="structure-page-hero" aria-labelledby="structure-page-title">
-		<img class="structure-page-hero__image" src="/images/HERO DARK ESTRUTURA.png" alt="" aria-hidden="true" fetchpriority="high" />
+		<ResponsiveImage class="structure-page-hero__image" src="/images/HERO DARK ESTRUTURA.png" alt="" width={1672} height={941} widths={[480, 768, 1024, 1440, 1672]} sizes="100vw" loading="eager" fetchpriority="high" ariaHidden="true" />
 		<div class="home-container structure-page-hero__inner">
 			<div class="structure-page-hero__copy">
 				<h1 id="structure-page-title">Estrutura <span>Criasett</span></h1>

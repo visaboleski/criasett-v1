@@ -1,4 +1,6 @@
 ---
+import ResponsiveImage from '@components/ResponsiveImage.astro';
+
 const navItems = [
 	{ href: '/', label: 'Home' },
 	{ href: '/criasett', label: 'A Criasett' },
@@ -20,7 +22,7 @@ const isExact = (href: string) => currentPath === href || currentPath === `${hre
 
 <header class="site-header">
 	<a class="brand" href="/" aria-label="Criasett — página inicial">
-		<img class="brand__logo" src="/images/Criasett_logo_Horizontal.png" alt="Criasett Indústria Gráfica" />
+		<ResponsiveImage class="brand__logo" src="/images/Criasett_logo_Horizontal.png" alt="Criasett Indústria Gráfica" width={5906} height={1355} widths={[360, 720]} sizes="(max-width: 760px) 180px, 216px" loading="eager" />
 	</a>
 
 	<nav class="desktop-nav" aria-label="Navegação principal">

@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
+import ResponsiveImage from '@components/ResponsiveImage.astro';
 ---
 
 <BaseLayout
@@ -7,14 +8,16 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 	description="Soluções Criasett em embalagens, materiais promocionais e comunicação para ponto de venda."
 >
 	<section class="products-overview-hero" aria-labelledby="products-overview-title">
-		<img
+		<ResponsiveImage
 			class="products-overview-hero__image"
 			src="/images/Minimal CMYK Packaging Wave Scene.png"
 			alt="Embalagens e materiais promocionais desenvolvidos pela Criasett"
-			width="1672"
-			height="941"
+			width={1672}
+			height={941}
+			widths={[480, 768, 1024, 1440, 1672]}
+			sizes="100vw"
+			loading="eager"
 			fetchpriority="high"
-			decoding="async"
 		/>
 
 		<div class="home-container products-overview-hero__inner">
@@ -35,13 +38,14 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 		<article class="products-overview-category">
 			<div class="home-container products-overview-category__inner">
 				<figure class="products-overview-category__media">
-					<img
+					<ResponsiveImage
 						src="/images/EMBALAGENS.png"
 						alt="Linha de embalagens em papel e papel-cartão da Criasett"
-						width="1600"
-						height="1200"
+						width={1448}
+						height={1086}
+						widths={[480, 768, 1024, 1448]}
+						sizes="(max-width: 760px) calc(100vw - 55px), 46vw"
 						loading="lazy"
-						decoding="async"
 					/>
 				</figure>
 
@@ -60,13 +64,14 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 		<article class="products-overview-category products-overview-category--reverse">
 			<div class="home-container products-overview-category__inner">
 				<figure class="products-overview-category__media">
-					<img
+					<ResponsiveImage
 						src="/images/PROMOCIONAIS.png"
 						alt="Materiais promocionais e soluções para ponto de venda da Criasett"
-						width="1600"
-						height="900"
+						width={1672}
+						height={941}
+						widths={[480, 768, 1024, 1440, 1672]}
+						sizes="(max-width: 760px) calc(100vw - 55px), 46vw"
 						loading="lazy"
-						decoding="async"
 					/>
 				</figure>
 

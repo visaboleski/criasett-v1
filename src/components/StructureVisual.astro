@@ -1,4 +1,6 @@
 ---
+import ResponsiveImage from '@components/ResponsiveImage.astro';
+
 interface Props {
 	variant: 'development' | 'prepress' | 'printing' | 'finishing' | 'logistics';
 }
@@ -62,11 +64,11 @@ const { variant } = Astro.props;
 	)}
 
 	{variant === 'printing' && (
-		<img class="structure-visual__image structure-visual__image--printing" src="/images/estrutura-impressao.png" alt="" width="2172" height="724" loading="lazy" decoding="async" />
+		<ResponsiveImage class="structure-visual__image structure-visual__image--printing" src="/images/estrutura-impressao.png" alt="" width={2172} height={724} widths={[480, 768, 1024, 1440, 2172]} sizes="(max-width: 760px) calc(100vw - 55px), 46vw" loading="lazy" />
 	)}
 
 	{variant === 'finishing' && (
-		<img class="structure-visual__image structure-visual__image--finishing" src="/images/novo acabamento.png" alt="" width="1536" height="1024" loading="lazy" decoding="async" />
+		<ResponsiveImage class="structure-visual__image structure-visual__image--finishing" src="/images/novo acabamento.png" alt="" width={1536} height={1024} widths={[480, 768, 1024, 1440, 1536]} sizes="(max-width: 760px) calc(100vw - 55px), 46vw" loading="lazy" />
 	)}
 
 	{variant === 'logistics' && (

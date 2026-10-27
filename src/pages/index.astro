@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
+import ResponsiveImage from '@components/ResponsiveImage.astro';
 ---
 
 <BaseLayout
@@ -8,7 +9,17 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 	pageClass="home-page"
 >
 	<section class="home-hero">
-		<img class="home-hero__image" src="/images/CRIASETT HERO.png" alt="" fetchpriority="high" />
+		<ResponsiveImage
+			class="home-hero__image"
+			src="/images/CRIASETT HERO.png"
+			alt=""
+			width={1672}
+			height={941}
+			widths={[480, 768, 1024, 1440, 1672]}
+			sizes="100vw"
+			loading="eager"
+			fetchpriority="high"
+		/>
 		<div class="home-container home-hero__inner">
 			<div class="home-hero__copy">
 				<h1>
@@ -55,13 +66,14 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 	<section class="home-section about-preview">
 		<div class="home-container about-preview__inner">
 			<div class="about-preview__watermark" aria-hidden="true">
-				<img
+				<ResponsiveImage
 					src="/images/CMYK Printing Press Blueprint Ribbons.png"
 					alt=""
-					width="2172"
-					height="724"
+					width={2172}
+					height={724}
+					widths={[480, 768, 1024, 1440, 2172]}
+					sizes="100vw"
 					loading="lazy"
-					decoding="async"
 				/>
 			</div>
 			<div class="about-preview__copy">
@@ -118,7 +130,7 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 			</div>
 			<div class="product-gateways">
 				<a class="product-gateway product-gateway--packaging" href="/produtos/embalagens">
-					<div class="product-gateway__visual"><img src="/images/EMBALAGENS.png" alt="Exemplos de embalagens produzidas pela Criasett" loading="lazy" /></div>
+					<div class="product-gateway__visual"><ResponsiveImage src="/images/EMBALAGENS.png" alt="Exemplos de embalagens produzidas pela Criasett" width={1448} height={1086} widths={[480, 768, 1024, 1448]} sizes="(max-width: 760px) calc(100vw - 56px), 44vw" loading="lazy" /></div>
 					<div class="product-gateway__content">
 						<p class="product-gateway__index">01</p>
 						<h3>Embalagens</h3>
@@ -127,7 +139,7 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 					</div>
 				</a>
 				<a class="product-gateway product-gateway--promotional" href="/produtos/promocionais">
-					<div class="product-gateway__visual"><img src="/images/PROMOCIONAIS.png" alt="Exemplos de materiais promocionais produzidos pela Criasett" loading="lazy" /></div>
+					<div class="product-gateway__visual"><ResponsiveImage src="/images/PROMOCIONAIS.png" alt="Exemplos de materiais promocionais produzidos pela Criasett" width={1672} height={941} widths={[480, 768, 1024, 1440, 1672]} sizes="(max-width: 760px) calc(100vw - 56px), 44vw" loading="lazy" /></div>
 					<div class="product-gateway__content">
 						<p class="product-gateway__index">02</p>
 						<h3>Promocionais</h3>

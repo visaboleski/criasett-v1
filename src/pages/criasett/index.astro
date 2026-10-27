@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
+import ResponsiveImage from '@components/ResponsiveImage.astro';
 import { institutionalVideo } from '@data/public-media';
 ---
 
@@ -34,11 +35,15 @@ import { institutionalVideo } from '@data/public-media';
 					aria-label="Assistir ao vídeo institucional da Criasett"
 					data-video-open
 				>
-					<img
+					<ResponsiveImage
 						src="/images/Criasett Industrial Printing Showcase.png"
 						alt=""
-						width="1254"
-						height="1254"
+						width={1254}
+						height={1254}
+						widths={[480, 768, 1024, 1254]}
+						sizes="(max-width: 860px) calc(100vw - 55px), 42vw"
+						loading="eager"
+						fetchpriority="high"
 					/>
 				</button>
 			</figure>
@@ -158,9 +163,13 @@ import { institutionalVideo } from '@data/public-media';
 			</div>
 
 			<figure class="quality-section__media">
-				<img
+				<ResponsiveImage
 					src="/images/Vibrant Color Proofs in a Modern Print Shop.png"
 					alt="Provas de cor impressas em uma gráfica moderna"
+					width={1190}
+					height={1322}
+					widths={[480, 768, 1024, 1190]}
+					sizes="(max-width: 760px) calc(100vw - 55px), 48vw"
 					loading="lazy"
 				/>
 			</figure>
@@ -194,9 +203,13 @@ import { institutionalVideo } from '@data/public-media';
 			</div>
 
 			<figure class="sustainability-section__media">
-				<img
+				<ResponsiveImage
 					src="/images/sustentabilidade.png"
 					alt="Folhas verdes entre camadas de papel branco com detalhes CMYK"
+					width={1983}
+					height={793}
+					widths={[480, 768, 1024, 1440, 1983]}
+					sizes="(max-width: 760px) calc(100vw - 55px), 48vw"
 					loading="lazy"
 				/>
 				<figcaption><strong>100%</strong><span>dos resíduos gerados recebem destinação correta</span></figcaption>
@@ -216,7 +229,7 @@ import { institutionalVideo } from '@data/public-media';
 
 			<div class="awards-section__visual">
 				<figure class="awards-section__media">
-					<img src="/images/premios.png" alt="Três troféus conquistados pela Criasett no Prêmio Paulista de Excelência Gráfica" loading="lazy" />
+					<ResponsiveImage src="/images/premios.png" alt="Três troféus conquistados pela Criasett no Prêmio Paulista de Excelência Gráfica" width={1672} height={941} widths={[480, 768, 1024, 1440, 1672]} sizes="(max-width: 760px) calc(100vw - 55px), 56vw" loading="lazy" />
 				</figure>
 
 				<ul class="awards-section__list" aria-label="Categorias premiadas">

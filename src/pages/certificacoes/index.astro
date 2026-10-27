@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
+import ResponsiveImage from '@components/ResponsiveImage.astro';
 import {
 	certificateDocuments,
 	type CertificateDocumentId,
@@ -54,7 +55,7 @@ const certifications: Certification[] = [
 	description="Certificações e práticas auditadas que reforçam o compromisso da Criasett com qualidade, responsabilidade e melhoria contínua."
 >
 	<section class="certifications-hero" aria-labelledby="certifications-title">
-		<img class="certifications-hero__image" src="/images/HERO CERTIFICACOES.png" alt="" fetchpriority="high" />
+		<ResponsiveImage class="certifications-hero__image" src="/images/HERO CERTIFICACOES.png" alt="" width={1672} height={941} widths={[480, 768, 1024, 1440, 1672]} sizes="100vw" loading="eager" fetchpriority="high" />
 		<div class="home-container certifications-hero__inner">
 			<div class="certifications-hero__copy">
 				<h1 id="certifications-title" class="certifications-hero__statement">

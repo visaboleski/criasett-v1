@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
+import ResponsiveImage from '@components/ResponsiveImage.astro';
 
 const categories = [
 	{
@@ -7,6 +8,8 @@ const categories = [
 		eyebrow: 'Performance no envase',
 		title: 'Cartuchos para Envase Automático ou Manual',
 		image: '/images/cartucho-transparente.png',
+		width: 1254,
+		height: 1254,
 		alt: 'Cartucho em papel-cartão desenvolvido pela Criasett',
 		paragraphs: [
 			'As embalagens da Criasett são desenvolvidas e produzidas para oferecer o melhor desempenho no envase de seus produtos, em processos automáticos ou manuais.',
@@ -19,6 +22,8 @@ const categories = [
 		eyebrow: 'Visibilidade no ponto de venda',
 		title: 'Embalagens Expositoras',
 		image: '/images/embalagem-expositora-transparente.png',
+		width: 1254,
+		height: 1254,
 		alt: 'Embalagem expositora em papel-cartão com visor frontal',
 		paragraphs: [
 			'Desenvolvidas em papel-cartão, as embalagens expositoras da Criasett contam com alça superior para exposição em gôndolas e painéis.',
@@ -31,6 +36,8 @@ const categories = [
 		eyebrow: 'Organização e destaque',
 		title: 'Display Expositor para Gôndola ou Balcão',
 		image: '/images/display-transparente.png',
+		width: 1254,
+		height: 1254,
 		alt: 'Display expositor em papel-cartão para gôndola ou balcão',
 		paragraphs: [
 			'Os displays expositores da Criasett valorizam sua marca e organizam seus produtos no ponto de venda. Com bandeja aberta e painel de comunicação personalizado, proporcionam visibilidade e fácil acesso aos itens em gôndolas e balcões.',
@@ -42,8 +49,12 @@ const categories = [
 		eyebrow: 'Experiência de marca',
 		title: 'Sacolas',
 		image: '/images/sacola-transparente.png',
+		width: 1122,
+		height: 1402,
 		alt: 'Sacola premium em papel produzida pela Criasett',
 		secondaryImage: '/images/sacola-boca-palhaco-transparente.png',
+		secondaryWidth: 1254,
+		secondaryHeight: 1254,
 		secondaryAlt: 'Sacola em papel-cartão com alça recortada',
 		paragraphs: [
 			'As sacolas da Criasett unem apresentação, resistência e valorização da marca em cada entrega. Produzidas em papel e papel-cartão, podem ser desenvolvidas para ações promocionais, eventos, varejo e embalagens premium.',
@@ -56,6 +67,8 @@ const categories = [
 		eyebrow: 'Valor em cada detalhe',
 		title: 'Enobrecimentos e Acabamentos Especiais',
 		image: '/images/embalagem-holografica-transparente.png',
+		width: 1254,
+		height: 1254,
 		alt: 'Embalagem com acabamento holográfico e detalhes especiais',
 		paragraphs: [
 			'A Criasett oferece uma ampla variedade de enobrecimentos para valorizar sua embalagem e destacar sua marca: laminações BOPP fosca e brilho, PET metalizado, soft touch e antirrisco, além de verniz à base de água, UV reserva, hot stamping, cold stamping, alto-relevo e braile.',
@@ -67,10 +80,15 @@ const categories = [
 
 <BaseLayout title="Embalagens" description="Soluções Criasett em embalagens de papel e papel-cartão.">
 	<section class="packaging-hero" aria-labelledby="packaging-hero-title">
-		<img
+		<ResponsiveImage
 			class="packaging-hero__image"
 			src="/images/hero embalagens.png"
 			alt="Embalagens desenvolvidas pela Criasett para diferentes segmentos"
+			width={1983}
+			height={793}
+			widths={[480, 768, 1024, 1440, 1983]}
+			sizes="100vw"
+			loading="eager"
 			fetchpriority="high"
 		/>
 		<div class="home-container packaging-hero__inner">
@@ -96,20 +114,26 @@ const categories = [
 			>
 				<div class="home-container packaging-category__inner">
 					<figure class:list={['packaging-category__media', category.secondaryImage && 'packaging-category__media--duo']}>
-						<img
+						<ResponsiveImage
 							class="packaging-category__image packaging-category__image--primary"
 							src={category.image}
 							alt={category.alt}
+							width={category.width}
+							height={category.height}
+							widths={[480, 768, 1024]}
+							sizes="(max-width: 760px) calc(100vw - 71px), 42vw"
 							loading="lazy"
-							decoding="async"
 						/>
 						{category.secondaryImage && (
-							<img
+							<ResponsiveImage
 								class="packaging-category__image packaging-category__image--secondary"
 								src={category.secondaryImage}
 								alt={category.secondaryAlt}
+								width={category.secondaryWidth}
+								height={category.secondaryHeight}
+								widths={[480, 768, 1024, 1254]}
+								sizes="(max-width: 760px) 50vw, 24vw"
 								loading="lazy"
-								decoding="async"
 							/>
 						)}
 					</figure>
