@@ -2158,8 +2158,8 @@ body {
 
 .about-page-hero__inner {
 	display: grid;
-	grid-template-columns: minmax(0, 1fr) minmax(280px, 340px);
-	gap: clamp(54px, 6vw, 92px);
+	grid-template-columns: minmax(0, 1fr) minmax(500px, 46%);
+	gap: clamp(48px, 4.5vw, 68px);
 	align-items: center;
 }
 
@@ -2219,10 +2219,10 @@ body {
 
 .about-page-hero__media {
 	position: relative;
-	width: 100%;
-	max-width: 340px;
+	width: 92%;
+	max-width: 560px;
 	aspect-ratio: 1;
-	justify-self: end;
+	justify-self: center;
 	margin: 0;
 	overflow: hidden;
 	border-radius: 14px;
@@ -2381,7 +2381,7 @@ body {
 	.about-page-hero__inner { grid-template-columns: 1fr; gap: 54px; }
 	.about-page-hero__copy { max-width: 720px; }
 	.about-page-hero__copy h1 { max-width: none; }
-	.about-page-hero__media { max-width: 380px; justify-self: center; }
+	.about-page-hero__media { max-width: 520px; justify-self: center; }
 	.about-page-story__inner { grid-template-columns: 170px minmax(0, 1fr); gap: 54px; }
 	.about-page-story__copy { grid-template-columns: 1fr; gap: 28px; }
 }
@@ -2391,7 +2391,7 @@ body {
 	.about-page-hero__inner { gap: 40px; }
 	.about-page-hero__copy h1 { max-width: none; margin-bottom: 24px; font-size: clamp(2.5rem, 11vw, 3.2rem); }
 	.about-page-hero__intro { font-size: 0.96rem; line-height: 1.68; }
-	.about-page-hero__media { max-width: none; aspect-ratio: 1; justify-self: stretch; border-radius: 9px; }
+	.about-page-hero__media { width: 100%; max-width: none; aspect-ratio: 1; justify-self: stretch; border-radius: 9px; }
 	.institutional-video-modal__panel { width: min(390px, calc(100vw - 24px)); border-radius: 10px; }
 	.about-page-story { padding: 56px 0 64px; }
 	.about-page-story__inner { grid-template-columns: 1fr; gap: 36px; }
