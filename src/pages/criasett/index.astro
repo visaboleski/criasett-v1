@@ -19,7 +19,12 @@ import { institutionalVideo } from '@data/public-media';
 				<p class="about-page-hero__intro">
 					Conheça nossa <strong>forma de trabalhar, as pessoas, a tecnologia e os princípios</strong> que transformam projetos em soluções gráficas de valor.
 				</p>
-				<p class="about-page-hero__prompt"><span aria-hidden="true">▶</span> Dê o play e conheça a Criasett.</p>
+				<button
+					type="button"
+					class="about-page-hero__prompt"
+					aria-label="Assistir ao vídeo institucional da Criasett"
+					data-video-open
+				><span aria-hidden="true">▶</span> Dê o play e conheça a Criasett.</button>
 			</div>
 
 			<figure class="about-page-hero__media">
@@ -30,17 +35,11 @@ import { institutionalVideo } from '@data/public-media';
 					data-video-open
 				>
 					<img
-						src="/images/criasett-institutional-video-cover.jpg"
+						src="/images/Criasett Industrial Printing Showcase.png"
 						alt=""
-						width="1080"
-						height="1920"
+						width="1254"
+						height="1254"
 					/>
-					<span class="about-page-hero__video-card-content" aria-hidden="true">
-						<span class="about-page-hero__video-card-play">
-							<svg viewBox="0 0 24 24"><path d="m9 7 8 5-8 5V7Z"></path></svg>
-						</span>
-						<span class="about-page-hero__video-card-label">Vídeo institucional</span>
-					</span>
 				</button>
 			</figure>
 		</div>
@@ -239,14 +238,14 @@ import { institutionalVideo } from '@data/public-media';
 	</section>
 
 	<script>
-		const videoTrigger = document.querySelector<HTMLButtonElement>('[data-video-open]');
+		const videoTriggers = document.querySelectorAll<HTMLButtonElement>('[data-video-open]');
 		const videoDialog = document.querySelector<HTMLDialogElement>('[data-video-dialog]');
-		const videoPanel = document.querySelector<HTMLElement>('[data-video-panel]');
 		const videoClose = document.querySelector<HTMLButtonElement>('[data-video-close]');
 		const videoPlayer = document.querySelector<HTMLVideoElement>('[data-video-player]');
 
-		if (videoTrigger && videoDialog && videoPanel && videoClose && videoPlayer) {
+		if (videoTriggers.length && videoDialog && videoClose && videoPlayer) {
 			let playbackRequest = 0;
+			let activeVideoTrigger: HTMLButtonElement | null = null;
 
 			const resetVideo = () => {
 				videoPlayer.pause();
@@ -258,14 +257,19 @@ import { institutionalVideo } from '@data/public-media';
 				if (videoDialog.open) videoDialog.close();
 			};
 
-			videoTrigger.addEventListener('click', () => {
+			const openVideo = (trigger: HTMLButtonElement) => {
 				const request = ++playbackRequest;
+				activeVideoTrigger = trigger;
 				videoDialog.showModal();
 				videoPlayer.muted = true;
 				videoClose.focus();
 				void videoPlayer.play().then(() => {
 					if (request !== playbackRequest || !videoDialog.open) resetVideo();
 				}).catch(() => undefined);
+			};
+
+			videoTriggers.forEach((trigger) => {
+				trigger.addEventListener('click', () => openVideo(trigger));
 			});
 
 			videoClose.addEventListener('click', closeVideo);
@@ -277,7 +281,8 @@ import { institutionalVideo } from '@data/public-media';
 			videoDialog.addEventListener('close', () => {
 				playbackRequest += 1;
 				resetVideo();
-				videoTrigger.focus();
+				activeVideoTrigger?.focus();
+				activeVideoTrigger = null;
 			});
 		}
 	</script>
