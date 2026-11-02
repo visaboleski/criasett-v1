@@ -5479,6 +5479,71 @@ a.contact-social-card:hover {
 	.packaging-hero__image { object-position: center; }
 }
 
+/* Preserve the approved mobile and desktop compositions around the narrow tablet gaps. */
+@media (min-width: 768px) and (max-width: 860px) {
+	.structure-page-hero {
+		min-height: 660px;
+	}
+
+	.structure-page-hero__inner {
+		display: flex;
+		align-items: center;
+		min-height: inherit;
+	}
+
+	.structure-page-hero__copy {
+		width: min(46%, 480px);
+		padding: 96px 0;
+	}
+
+	.structure-page-hero__image {
+		inset: 0;
+		height: 100%;
+		object-fit: cover;
+		object-position: 56% center;
+	}
+}
+
+@media (min-width: 541px) and (max-width: 760px) {
+	.products-overview-hero,
+	.packaging-hero {
+		min-height: 600px;
+	}
+
+	.products-overview-hero::after,
+	.packaging-hero::after {
+		display: block;
+	}
+
+	.products-overview-hero__inner,
+	.packaging-hero__inner {
+		display: flex;
+		align-items: center;
+		min-height: inherit;
+	}
+
+	.products-overview-hero__copy {
+		width: min(49%, 510px);
+		padding: 74px 0;
+	}
+
+	.packaging-hero__copy {
+		width: min(48%, 490px);
+		padding: 72px 0;
+	}
+
+	.products-overview-hero__image,
+	.packaging-hero__image {
+		inset: 0;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.products-overview-hero__image { object-position: center 42%; }
+	.packaging-hero__image { object-position: center; }
+	.promotional-hero .promotional-hero__image { object-position: 58% center; }
+}
+
 @media (prefers-reduced-motion: reduce) {
 	*, *::before, *::after {
 		scroll-behavior: auto !important;
