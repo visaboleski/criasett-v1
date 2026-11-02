@@ -2186,14 +2186,6 @@ body {
 }
 
 @media (max-width: 900px) {
-	.home-hero { min-height: 1090px; background: #fff; }
-	.home-hero::before { display: none; }
-	.home-hero__inner { display: block; min-height: 0; }
-	.home-hero__copy { width: min(100%, 520px); padding: 112px 0 0; }
-	.home-hero h1 { max-width: 10ch; font-size: clamp(3rem, 6.8vw, 3.7rem); }
-	.home-hero__copy > p { max-width: 500px; }
-	.home-hero__image { top: 500px; bottom: auto; height: 420px; object-fit: cover; object-position: 68% center; }
-	.credential-strip { bottom: 24px; }
 	.middle-canvas { background: #f8fafb; }
 	.middle-canvas .home-section {
 		padding-block: 88px;
@@ -2246,11 +2238,11 @@ body {
 	.home-hero h1 { max-width: 100%; font-size: clamp(2.9rem, 13vw, 3.85rem); }
 	.home-hero__copy > p { max-width: 36ch; font-size: 0.98rem; line-height: 1.65; }
 	.home-hero__image {
-		top: clamp(58px, calc(386px - 76vw), 118px);
+		top: 76px;
 		right: auto;
 		bottom: auto;
 		left: 50%;
-		width: max(100%, 350px);
+		width: max(100%, 400px);
 		height: auto;
 		max-width: none;
 		aspect-ratio: 941 / 1671;
@@ -5385,6 +5377,171 @@ a.contact-social-card:hover {
 /* This instance retains the original institutional cyan over the photographic watermark. */
 .about-preview .home-eyebrow {
 	color: var(--cyan);
+}
+
+/* Keep the four approved internal Heroes in their horizontal composition on tablets. */
+@media (min-width: 761px) and (max-width: 900px) {
+	.policies-page-hero,
+	.contact-page-hero {
+		display: grid;
+		min-height: 590px;
+		background: #f8fafb;
+	}
+
+	.policies-page-hero__image,
+	.contact-page-hero__image {
+		inset: 0;
+		height: 100%;
+		object-fit: cover;
+		object-position: center;
+	}
+
+	.policies-page-hero::after {
+		display: block;
+		background: linear-gradient(90deg, rgb(250 252 252 / 42%) 0%, rgb(250 252 252 / 24%) 40%, rgb(250 252 252 / 4%) 58%, transparent 72%);
+	}
+
+	.contact-page-hero::after {
+		display: block;
+		background: linear-gradient(90deg, rgb(250 252 252 / 98%) 0%, rgb(250 252 252 / 90%) 38%, rgb(250 252 252 / 12%) 66%, transparent 100%);
+	}
+
+	.policies-page-hero__inner,
+	.contact-page-hero__inner {
+		display: flex;
+		align-items: center;
+		min-height: auto;
+		padding: 74px 0;
+	}
+
+	.policies-page-hero__copy { width: min(52%, 540px); }
+	.contact-page-hero__copy { width: min(52%, 520px); }
+
+	.policies-page-hero__title {
+		max-width: none;
+		margin: 0 0 26px;
+		font-size: clamp(2.55rem, 3.5vw, 3.5rem);
+	}
+
+	.policies-page-hero__description {
+		max-width: 56ch;
+		font-size: 1rem;
+		line-height: 1.72;
+	}
+
+	.contact-page-hero__statement {
+		max-width: none;
+		margin: 0 0 24px;
+		font-size: clamp(2.8rem, 3.75vw, 3.8rem);
+	}
+
+	.contact-page-hero__intro {
+		max-width: 55ch;
+		font-size: 1rem;
+		line-height: 1.72;
+	}
+
+	.products-overview-hero,
+	.packaging-hero {
+		min-height: 600px;
+	}
+
+	.products-overview-hero::after,
+	.packaging-hero::after {
+		display: block;
+	}
+
+	.products-overview-hero__inner,
+	.packaging-hero__inner {
+		display: flex;
+		align-items: center;
+		min-height: inherit;
+	}
+
+	.products-overview-hero__copy {
+		width: min(49%, 510px);
+		padding: 74px 0;
+	}
+
+	.packaging-hero__copy {
+		width: min(48%, 490px);
+		padding: 72px 0;
+	}
+
+	.products-overview-hero__image,
+	.packaging-hero__image {
+		inset: 0;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.products-overview-hero__image { object-position: center 42%; }
+	.packaging-hero__image { object-position: center; }
+}
+
+/* Preserve the approved mobile and desktop compositions around the narrow tablet gaps. */
+@media (min-width: 768px) and (max-width: 860px) {
+	.structure-page-hero {
+		min-height: 660px;
+	}
+
+	.structure-page-hero__inner {
+		display: flex;
+		align-items: center;
+		min-height: inherit;
+	}
+
+	.structure-page-hero__copy {
+		width: min(46%, 480px);
+		padding: 96px 0;
+	}
+
+	.structure-page-hero__image {
+		inset: 0;
+		height: 100%;
+		object-fit: cover;
+		object-position: 56% center;
+	}
+}
+
+@media (min-width: 541px) and (max-width: 760px) {
+	.products-overview-hero,
+	.packaging-hero {
+		min-height: 600px;
+	}
+
+	.products-overview-hero::after,
+	.packaging-hero::after {
+		display: block;
+	}
+
+	.products-overview-hero__inner,
+	.packaging-hero__inner {
+		display: flex;
+		align-items: center;
+		min-height: inherit;
+	}
+
+	.products-overview-hero__copy {
+		width: min(49%, 510px);
+		padding: 74px 0;
+	}
+
+	.packaging-hero__copy {
+		width: min(48%, 490px);
+		padding: 72px 0;
+	}
+
+	.products-overview-hero__image,
+	.packaging-hero__image {
+		inset: 0;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.products-overview-hero__image { object-position: center 42%; }
+	.packaging-hero__image { object-position: center; }
+	.promotional-hero .promotional-hero__image { object-position: 58% center; }
 }
 
 @media (prefers-reduced-motion: reduce) {
