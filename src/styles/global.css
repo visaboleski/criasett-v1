@@ -2246,11 +2246,11 @@ body {
 	.home-hero h1 { max-width: 100%; font-size: clamp(2.9rem, 13vw, 3.85rem); }
 	.home-hero__copy > p { max-width: 36ch; font-size: 0.98rem; line-height: 1.65; }
 	.home-hero__image {
-		top: clamp(58px, calc(386px - 76vw), 118px);
+		top: 76px;
 		right: auto;
 		bottom: auto;
 		left: 50%;
-		width: max(100%, 350px);
+		width: max(100%, 400px);
 		height: auto;
 		max-width: none;
 		aspect-ratio: 941 / 1671;
