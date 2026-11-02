@@ -2186,14 +2186,6 @@ body {
 }
 
 @media (max-width: 900px) {
-	.home-hero { min-height: 1090px; background: #fff; }
-	.home-hero::before { display: none; }
-	.home-hero__inner { display: block; min-height: 0; }
-	.home-hero__copy { width: min(100%, 520px); padding: 112px 0 0; }
-	.home-hero h1 { max-width: 10ch; font-size: clamp(3rem, 6.8vw, 3.7rem); }
-	.home-hero__copy > p { max-width: 500px; }
-	.home-hero__image { top: 500px; bottom: auto; height: 420px; object-fit: cover; object-position: 68% center; }
-	.credential-strip { bottom: 24px; }
 	.middle-canvas { background: #f8fafb; }
 	.middle-canvas .home-section {
 		padding-block: 88px;
