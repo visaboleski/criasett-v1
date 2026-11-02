@@ -23,7 +23,22 @@ const socialProfiles = [
 	description="Entre em contato com a Criasett por telefone, e-mail ou através de nossos canais de atendimento."
 >
 	<section class="contact-page-hero" aria-labelledby="contact-page-title">
-		<ResponsiveImage class="contact-page-hero__image" src="/images/HERO CONTATOS IMAGE.png" alt="" width={1672} height={941} widths={[480, 768, 1024, 1440, 1672]} sizes="100vw" loading="eager" fetchpriority="high" ariaHidden="true" />
+		<ResponsiveImage
+			class="contact-page-hero__image"
+			src="/images/HERO CONTATOS IMAGE.png"
+			mobileSrc="/images/hero contatos mobile.png"
+			mobileWidths={[480, 768, 941]}
+			mobileMedia="(max-width: 767px)"
+			mobileSizes="100vw"
+			alt=""
+			width={1672}
+			height={941}
+			widths={[480, 768, 1024, 1440, 1672]}
+			sizes="100vw"
+			loading="eager"
+			fetchpriority="high"
+			ariaHidden="true"
+		/>
 		<div class="home-container contact-page-hero__inner">
 			<div class="contact-page-hero__copy">
 				<h1 id="contact-page-title" class="contact-page-hero__statement">

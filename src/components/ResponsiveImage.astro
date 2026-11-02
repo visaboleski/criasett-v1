@@ -11,6 +11,10 @@ interface Props {
 	fetchpriority?: 'high' | 'low' | 'auto';
 	decoding?: 'async' | 'sync' | 'auto';
 	ariaHidden?: 'true' | 'false';
+	mobileSrc?: string;
+	mobileWidths?: number[];
+	mobileMedia?: string;
+	mobileSizes?: string;
 }
 
 const {
@@ -25,17 +29,26 @@ const {
 	fetchpriority = 'auto',
 	decoding = 'async',
 	ariaHidden,
+	mobileSrc,
+	mobileWidths = [],
+	mobileMedia = '(max-width: 820px)',
+	mobileSizes = '100vw',
 } = Astro.props;
 
 const filename = src.split('/').at(-1) ?? src;
-const stem = filename.replace(/\.[^.]+$/, '');
-const slug = stem
-	.normalize('NFD')
-	.replace(/[\u0300-\u036f]/g, '')
-	.toLowerCase()
-	.replace(/[^a-z0-9]+/g, '-')
-	.replace(/^-|-$/g, '');
+const assetSlug = (assetSrc: string) => {
+	const assetFilename = assetSrc.split('/').at(-1) ?? assetSrc;
+	return assetFilename
+		.replace(/\.[^.]+$/, '')
+		.normalize('NFD')
+		.replace(/[\u0300-\u036f]/g, '')
+		.toLowerCase()
+		.replace(/[^a-z0-9]+/g, '-')
+		.replace(/^-|-$/g, '');
+};
+const slug = assetSlug(src);
 const optimizedPath = `/images/optimized/${slug}`;
+const mobileOptimizedPath = mobileSrc ? `/images/optimized/${assetSlug(mobileSrc)}` : '';
 const hasAlpha = [
 	'Criasett_logo_Horizontal.png',
 	'Criasett_logo_Branco.png',
@@ -49,9 +62,13 @@ const hasAlpha = [
 ].includes(filename);
 const srcset = (format: 'avif' | 'webp') =>
 	widths.map((candidate) => `${optimizedPath}-${candidate}.${format} ${candidate}w`).join(', ');
+const mobileSrcset = (format: 'avif' | 'webp') =>
+	mobileWidths.map((candidate) => `${mobileOptimizedPath}-${candidate}.${format} ${candidate}w`).join(', ');
 ---
 
 <picture class="responsive-picture">
+	{mobileSrc && mobileWidths.length > 0 && <source media={mobileMedia} type="image/avif" srcset={mobileSrcset('avif')} sizes={mobileSizes} />}
+	{mobileSrc && mobileWidths.length > 0 && <source media={mobileMedia} type="image/webp" srcset={mobileSrcset('webp')} sizes={mobileSizes} />}
 	{!hasAlpha && <source type="image/avif" srcset={srcset('avif')} sizes={sizes} />}
 	<source type="image/webp" srcset={srcset('webp')} sizes={sizes} />
 	<img
