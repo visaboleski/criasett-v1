@@ -5282,6 +5282,21 @@ a.contact-social-card:hover {
 	}
 }
 
+@media (max-width: 440px) {
+	.packaging-hero:not(.promotional-hero)::after {
+		background: linear-gradient(
+			180deg,
+			rgb(251 252 252 / 94%) 0%,
+			rgb(251 252 252 / 92%) 36%,
+			rgb(251 252 252 / 82%) 48%,
+			rgb(251 252 252 / 68%) 58%,
+			rgb(251 252 252 / 46%) 66%,
+			rgb(251 252 252 / 20%) 72%,
+			transparent 78%
+		);
+	}
+}
+
 @media (max-width: 540px) {
 	.promotional-hero {
 		min-height: clamp(720px, 162vw, 876px);
